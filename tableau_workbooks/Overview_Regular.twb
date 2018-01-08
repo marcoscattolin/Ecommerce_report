@@ -221,7 +221,7 @@
         <calculation class='tableau' formula='1' />
       </column>
       <column aggregation='Sum' datatype='integer' name='[rank]' role='dimension' type='ordinal' />
-      <layout dim-ordering='alphabetic' dim-percentage='0.365112' measure-ordering='alphabetic' measure-percentage='0.332657' parameter-percentage='0.302231' show-structure='true' user-set-layout='true' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.367308' measure-ordering='alphabetic' measure-percentage='0.330769' parameter-percentage='0.301923' show-structure='true' user-set-layout='true' />
       <semantic-values>
         <semantic-value key='[Country].[Name]' value='&quot;Italy&quot;' />
       </semantic-values>
@@ -3114,10 +3114,10 @@
         <calculation class='tableau' formula='sum([val_tot_eur])/sum([qty_tot])' />
       </column>
       <column caption='Delta Val %' datatype='real' default-format='p0%' name='[Calculation_278097340794748928]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='(sum([Value K€ (copy)])/sum([Current Year Value K€ (copy)]))-1' />
+        <calculation class='tableau' formula='(sum([Value K€ (copy 2)])/sum([Value K€, Y-1 (copy)]))-1' />
       </column>
       <column caption='Delta Q %' datatype='real' default-format='p0%' name='[Calculation_278097340795404289]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='sum([Qty (copy)])/sum([Current Year Qty (copy)])-1' />
+        <calculation class='tableau' formula='sum([Qty (copy 2)])/sum([Qty, Y-1 (copy)])-1' />
       </column>
       <column caption='Qty, Y-1' datatype='integer' default-format='n#,##0;-#,##0' name='[Current Year Qty (copy)]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[qty_tot]&#13;&#10;ELSE 0&#13;&#10;END' />
@@ -3128,11 +3128,23 @@
       <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
         <calculation class='tableau' formula='1' />
       </column>
+      <column caption='Qty Reg' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty (copy 2)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[qty_reg]&#13;&#10;ELSE 0&#13;&#10;END' />
+      </column>
       <column caption='Qty' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty (copy)]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[qty_tot]&#13;&#10;ELSE 0&#13;&#10;END' />
       </column>
+      <column caption='Qty Reg, Y-1' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty, Y-1 (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[qty_reg]&#13;&#10;ELSE 0&#13;&#10;END' />
+      </column>
+      <column caption='Value Reg K€' datatype='real' name='[Value K€ (copy 2)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[val_reg_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
+      </column>
       <column caption='Value K€' datatype='real' name='[Value K€ (copy)]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[val_tot_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
+      </column>
+      <column caption='Value Reg K€, Y-1' datatype='real' name='[Value K€, Y-1 (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[val_reg_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
       </column>
       <column caption='Brand' datatype='string' name='[brand_text (group)]' role='dimension' type='nominal'>
         <calculation class='categorical-bin' column='[brand_text]' new-bin='true'>
@@ -3407,12 +3419,16 @@
       <folder name='Current Year' role='measures'>
         <folder-item name='[Calculation_278097340794748928]' type='field' />
         <folder-item name='[Calculation_278097340795404289]' type='field' />
+        <folder-item name='[Qty (copy 2)]' type='field' />
         <folder-item name='[Qty (copy)]' type='field' />
+        <folder-item name='[Value K€ (copy 2)]' type='field' />
         <folder-item name='[Value K€ (copy)]' type='field' />
       </folder>
       <folder name='Previous Year' role='measures'>
         <folder-item name='[Current Year Qty (copy)]' type='field' />
         <folder-item name='[Current Year Value K€ (copy)]' type='field' />
+        <folder-item name='[Qty, Y-1 (copy)]' type='field' />
+        <folder-item name='[Value K€, Y-1 (copy)]' type='field' />
       </folder>
       <folder name='Regolari' role='measures'>
         <folder-item name='[qty_reg]' type='field' />
@@ -3431,7 +3447,7 @@
         <folder-item name='[qty_tot]' type='field' />
         <folder-item name='[val_tot_eur]' type='field' />
       </folder>
-      <layout dim-ordering='alphabetic' dim-percentage='0.0912779' measure-ordering='alphabetic' measure-percentage='0.84787' parameter-percentage='0.0608519' show-aliased-fields='true' show-structure='false' user-set-layout='true' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.0912779' measure-ordering='alphabetic' measure-percentage='0.849899' parameter-percentage='0.0588235' show-aliased-fields='true' show-structure='false' user-set-layout='true' />
       <style>
         <style-rule element='mark'>
           <encoding attr='color' field='[:Measure Names]' type='palette'>
@@ -6264,10 +6280,10 @@
               <calculation class='tableau' formula='[qty_tot]' />
             </column>
             <column caption='Delta Val %' datatype='real' default-format='p0%' name='[Calculation_278097340794748928]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='(sum([Value K€ (copy)])/sum([Current Year Value K€ (copy)]))-1' />
+              <calculation class='tableau' formula='(sum([Value K€ (copy 2)])/sum([Value K€, Y-1 (copy)]))-1' />
             </column>
             <column caption='Delta Q %' datatype='real' default-format='p0%' name='[Calculation_278097340795404289]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='sum([Qty (copy)])/sum([Current Year Qty (copy)])-1' />
+              <calculation class='tableau' formula='sum([Qty (copy 2)])/sum([Qty, Y-1 (copy)])-1' />
             </column>
             <column caption='Qty, Y-1' datatype='integer' default-format='n#,##0;-#,##0' name='[Current Year Qty (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[qty_tot]&#13;&#10;ELSE 0&#13;&#10;END' />
@@ -6275,11 +6291,23 @@
             <column caption='Value K€, Y-1' datatype='real' name='[Current Year Value K€ (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[val_tot_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
+            <column caption='Qty Reg' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty (copy 2)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[qty_reg]&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
             <column caption='Qty' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[qty_tot]&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
+            <column caption='Qty Reg, Y-1' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty, Y-1 (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[qty_reg]&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
+            <column caption='Value Reg K€' datatype='real' name='[Value K€ (copy 2)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[val_reg_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
             <column caption='Value K€' datatype='real' name='[Value K€ (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[val_tot_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
+            <column caption='Value Reg K€, Y-1' datatype='real' name='[Value K€, Y-1 (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[val_reg_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
             <column datatype='string' name='[ballerina_flag]' role='dimension' type='nominal' />
             <column caption='Brand' datatype='string' name='[brand_text (group)]' role='dimension' type='nominal'>
@@ -6314,6 +6342,7 @@
                 </address>
               </table-calc>
             </column-instance>
+            <column datatype='integer' name='[qty_reg]' role='measure' type='quantitative' />
             <column datatype='integer' name='[qty_tot]' role='measure' type='quantitative' />
             <column-instance column='[Calculation_1045961061373255682]' derivation='Sum' name='[sum:Calculation_1045961061373255682:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_1045961061373399043]' derivation='Sum' name='[sum:Calculation_1045961061373399043:qk]' pivot='key' type='quantitative' />
@@ -6323,6 +6352,7 @@
             <column-instance column='[Value K€ (copy)]' derivation='Sum' name='[sum:Value K€ (copy):qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_278097340794748928]' derivation='User' name='[usr:Calculation_278097340794748928:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_278097340795404289]' derivation='User' name='[usr:Calculation_278097340795404289:qk]' pivot='key' type='quantitative' />
+            <column datatype='real' name='[val_reg_eur]' role='measure' type='quantitative' />
             <column datatype='real' name='[val_tot_eur]' role='measure' type='quantitative' />
             <column-instance column='[date]' derivation='Year' name='[yr:date:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
@@ -6509,29 +6539,26 @@
             <mapsource name='Tableau' />
           </mapsources>
           <datasource-dependencies datasource='federated.1j5g47d1n4b5z61c3y3fs04qql3k'>
-            <column caption='Tot. Value K€' datatype='real' name='[Calculation_1045961061373255682]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='[val_tot_eur]/1000' />
-            </column>
-            <column caption='Tot. Qty' datatype='integer' name='[Calculation_1045961061373399043]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='[qty_tot]' />
-            </column>
             <column caption='Delta Val %' datatype='real' default-format='p0%' name='[Calculation_278097340794748928]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='(sum([Value K€ (copy)])/sum([Current Year Value K€ (copy)]))-1' />
+              <calculation class='tableau' formula='(sum([Value K€ (copy 2)])/sum([Value K€, Y-1 (copy)]))-1' />
             </column>
             <column caption='Delta Q %' datatype='real' default-format='p0%' name='[Calculation_278097340795404289]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='sum([Qty (copy)])/sum([Current Year Qty (copy)])-1' />
-            </column>
-            <column caption='Qty, Y-1' datatype='integer' default-format='n#,##0;-#,##0' name='[Current Year Qty (copy)]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[qty_tot]&#13;&#10;ELSE 0&#13;&#10;END' />
+              <calculation class='tableau' formula='sum([Qty (copy 2)])/sum([Qty, Y-1 (copy)])-1' />
             </column>
             <column caption='Value K€, Y-1' datatype='real' name='[Current Year Value K€ (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[val_tot_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
-            <column caption='Qty' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty (copy)]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[qty_tot]&#13;&#10;ELSE 0&#13;&#10;END' />
+            <column caption='Qty Reg' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty (copy 2)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[qty_reg]&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
-            <column caption='Value K€' datatype='real' name='[Value K€ (copy)]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[val_tot_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
+            <column caption='Qty Reg, Y-1' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty, Y-1 (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[qty_reg]&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
+            <column caption='Value Reg K€' datatype='real' name='[Value K€ (copy 2)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[val_reg_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
+            <column caption='Value Reg K€, Y-1' datatype='real' name='[Value K€, Y-1 (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[val_reg_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
             <column datatype='string' name='[ballerina_flag]' role='dimension' type='nominal' />
             <column caption='Brand' datatype='string' name='[brand_text (group)]' role='dimension' type='nominal'>
@@ -6544,62 +6571,42 @@
             </column>
             <column datatype='string' name='[brand_text]' role='dimension' type='nominal' />
             <column datatype='string' name='[business_area_text]' role='dimension' type='nominal' />
-            <column datatype='date' name='[date]' role='dimension' type='ordinal' />
             <column datatype='string' name='[galleria_flag]' role='dimension' type='nominal' />
             <column aggregation='Sum' datatype='integer' name='[isoyear]' role='dimension' type='ordinal' />
             <column-instance column='[ballerina_flag]' derivation='None' name='[none:ballerina_flag:nk]' pivot='key' type='nominal' />
             <column-instance column='[business_area_text]' derivation='None' name='[none:business_area_text:nk]' pivot='key' type='nominal' />
             <column-instance column='[galleria_flag]' derivation='None' name='[none:galleria_flag:nk]' pivot='key' type='nominal' />
             <column-instance column='[ytd]' derivation='None' name='[none:ytd:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Calculation_1045961061373255682]' derivation='Sum' name='[pcdf:sum:Calculation_1045961061373255682:qk:13]' pivot='key' type='quantitative'>
-              <table-calc diff-options='Relative' ordering-field='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[yr:date:ok]' ordering-type='Field' type='PctDiff'>
-                <address>
-                  <value>1</value>
-                </address>
-              </table-calc>
-            </column-instance>
-            <column-instance column='[Calculation_1045961061373399043]' derivation='Sum' name='[pcdf:sum:Calculation_1045961061373399043:qk:30]' pivot='key' type='quantitative'>
-              <table-calc diff-options='Relative' ordering-field='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[yr:date:ok]' ordering-type='Field' type='PctDiff'>
-                <address>
-                  <value>1</value>
-                </address>
-              </table-calc>
-            </column-instance>
-            <column datatype='integer' name='[qty_tot]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_1045961061373255682]' derivation='Sum' name='[sum:Calculation_1045961061373255682:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_1045961061373399043]' derivation='Sum' name='[sum:Calculation_1045961061373399043:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Current Year Qty (copy)]' derivation='Sum' name='[sum:Current Year Qty (copy):qk]' pivot='key' type='quantitative' />
+            <column datatype='integer' name='[qty_reg]' role='measure' type='quantitative' />
             <column-instance column='[Current Year Value K€ (copy)]' derivation='Sum' name='[sum:Current Year Value K€ (copy):qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Qty (copy)]' derivation='Sum' name='[sum:Qty (copy):qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Value K€ (copy)]' derivation='Sum' name='[sum:Value K€ (copy):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Qty (copy 2)]' derivation='Sum' name='[sum:Qty (copy 2):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Qty, Y-1 (copy)]' derivation='Sum' name='[sum:Qty, Y-1 (copy):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Value K€ (copy 2)]' derivation='Sum' name='[sum:Value K€ (copy 2):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Value K€, Y-1 (copy)]' derivation='Sum' name='[sum:Value K€, Y-1 (copy):qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_278097340794748928]' derivation='User' name='[usr:Calculation_278097340794748928:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_278097340795404289]' derivation='User' name='[usr:Calculation_278097340795404289:qk]' pivot='key' type='quantitative' />
+            <column datatype='real' name='[val_reg_eur]' role='measure' type='quantitative' />
             <column datatype='real' name='[val_tot_eur]' role='measure' type='quantitative' />
-            <column-instance column='[date]' derivation='Year' name='[yr:date:ok]' pivot='key' type='ordinal' />
             <column datatype='boolean' name='[ytd]' role='dimension' type='nominal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[:Measure Names]'>
             <groupfilter function='union' user:op='manual'>
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Qty (copy):qk]&quot;' />
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Value K€ (copy):qk]&quot;' />
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[usr:Calculation_278097340794748928:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Qty (copy 2):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Value K€ (copy 2):qk]&quot;' />
               <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[usr:Calculation_278097340795404289:qk]&quot;' />
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Current Year Qty (copy):qk]&quot;' />
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Current Year Value K€ (copy):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[usr:Calculation_278097340794748928:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Qty, Y-1 (copy):qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Value K€, Y-1 (copy):qk]&quot;' />
             </groupfilter>
           </filter>
           <sort class='manual' column='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[:Measure Names]' direction='ASC'>
             <dictionary>
-              <bucket>&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Qty (copy):qk]&quot;</bucket>
-              <bucket>&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Value K€ (copy):qk]&quot;</bucket>
+              <bucket>&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Qty (copy 2):qk]&quot;</bucket>
+              <bucket>&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Value K€ (copy 2):qk]&quot;</bucket>
               <bucket>&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[usr:Calculation_278097340795404289:qk]&quot;</bucket>
               <bucket>&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[usr:Calculation_278097340794748928:qk]&quot;</bucket>
-              <bucket>&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Current Year Qty (copy):qk]&quot;</bucket>
+              <bucket>&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Qty, Y-1 (copy):qk]&quot;</bucket>
               <bucket>&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Current Year Value K€ (copy):qk]&quot;</bucket>
-              <bucket>&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Calculation_1045961061373399043:qk]&quot;</bucket>
-              <bucket>&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Calculation_1045961061373255682:qk]&quot;</bucket>
-              <bucket>&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[pcdf:sum:Calculation_1045961061373399043:qk:30]&quot;</bucket>
-              <bucket>&quot;[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[pcdf:sum:Calculation_1045961061373255682:qk:13]&quot;</bucket>
             </dictionary>
           </sort>
           <filter class='categorical' column='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[brand_text (group)]'>
@@ -6635,8 +6642,6 @@
             <format attr='height' field='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[brand_text (group)]' value='42' />
             <format attr='width' field='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[:Measure Names]' value='113' />
             <format attr='font-weight' data-class='subtotal' value='bold' />
-            <format attr='text-format' field='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[pcdf:sum:Calculation_1045961061373255682:qk:13]' value='p0%' />
-            <format attr='text-format' field='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[pcdf:sum:Calculation_1045961061373399043:qk:30]' value='p0%' />
             <format attr='color' data-class='subtotal' value='#ffffff' />
             <format attr='font-weight' data-class='total' value='bold' />
             <format attr='color' data-class='total' value='#ffffff' />
@@ -7440,10 +7445,10 @@
               <calculation class='tableau' formula='[qty_tot]' />
             </column>
             <column caption='Delta Val %' datatype='real' default-format='p0%' name='[Calculation_278097340794748928]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='(sum([Value K€ (copy)])/sum([Current Year Value K€ (copy)]))-1' />
+              <calculation class='tableau' formula='(sum([Value K€ (copy 2)])/sum([Value K€, Y-1 (copy)]))-1' />
             </column>
             <column caption='Delta Q %' datatype='real' default-format='p0%' name='[Calculation_278097340795404289]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='sum([Qty (copy)])/sum([Current Year Qty (copy)])-1' />
+              <calculation class='tableau' formula='sum([Qty (copy 2)])/sum([Qty, Y-1 (copy)])-1' />
             </column>
             <column caption='Qty, Y-1' datatype='integer' default-format='n#,##0;-#,##0' name='[Current Year Qty (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[qty_tot]&#13;&#10;ELSE 0&#13;&#10;END' />
@@ -7451,11 +7456,23 @@
             <column caption='Value K€, Y-1' datatype='real' name='[Current Year Value K€ (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[val_tot_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
+            <column caption='Qty Reg' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty (copy 2)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[qty_reg]&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
             <column caption='Qty' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[qty_tot]&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
+            <column caption='Qty Reg, Y-1' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty, Y-1 (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[qty_reg]&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
+            <column caption='Value Reg K€' datatype='real' name='[Value K€ (copy 2)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[val_reg_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
             <column caption='Value K€' datatype='real' name='[Value K€ (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[val_tot_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
+            <column caption='Value Reg K€, Y-1' datatype='real' name='[Value K€, Y-1 (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[val_reg_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
             <column datatype='string' name='[ballerina_flag]' role='dimension' type='nominal' />
             <column caption='Brand' datatype='string' name='[brand_text (group)]' role='dimension' type='nominal'>
@@ -7492,6 +7509,7 @@
                 </address>
               </table-calc>
             </column-instance>
+            <column datatype='integer' name='[qty_reg]' role='measure' type='quantitative' />
             <column datatype='integer' name='[qty_tot]' role='measure' type='quantitative' />
             <column-instance column='[Calculation_1045961061373255682]' derivation='Sum' name='[sum:Calculation_1045961061373255682:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_1045961061373399043]' derivation='Sum' name='[sum:Calculation_1045961061373399043:qk]' pivot='key' type='quantitative' />
@@ -7501,6 +7519,7 @@
             <column-instance column='[Value K€ (copy)]' derivation='Sum' name='[sum:Value K€ (copy):qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_278097340794748928]' derivation='User' name='[usr:Calculation_278097340794748928:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_278097340795404289]' derivation='User' name='[usr:Calculation_278097340795404289:qk]' pivot='key' type='quantitative' />
+            <column datatype='real' name='[val_reg_eur]' role='measure' type='quantitative' />
             <column datatype='real' name='[val_tot_eur]' role='measure' type='quantitative' />
             <column-instance column='[date]' derivation='Year' name='[yr:date:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
@@ -7748,10 +7767,10 @@
               <calculation class='tableau' formula='[qty_tot]' />
             </column>
             <column caption='Delta Val %' datatype='real' default-format='p0%' name='[Calculation_278097340794748928]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='(sum([Value K€ (copy)])/sum([Current Year Value K€ (copy)]))-1' />
+              <calculation class='tableau' formula='(sum([Value K€ (copy 2)])/sum([Value K€, Y-1 (copy)]))-1' />
             </column>
             <column caption='Delta Q %' datatype='real' default-format='p0%' name='[Calculation_278097340795404289]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='sum([Qty (copy)])/sum([Current Year Qty (copy)])-1' />
+              <calculation class='tableau' formula='sum([Qty (copy 2)])/sum([Qty, Y-1 (copy)])-1' />
             </column>
             <column caption='Qty, Y-1' datatype='integer' default-format='n#,##0;-#,##0' name='[Current Year Qty (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[qty_tot]&#13;&#10;ELSE 0&#13;&#10;END' />
@@ -7759,11 +7778,23 @@
             <column caption='Value K€, Y-1' datatype='real' name='[Current Year Value K€ (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[val_tot_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
+            <column caption='Qty Reg' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty (copy 2)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[qty_reg]&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
             <column caption='Qty' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[qty_tot]&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
+            <column caption='Qty Reg, Y-1' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty, Y-1 (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[qty_reg]&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
+            <column caption='Value Reg K€' datatype='real' name='[Value K€ (copy 2)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[val_reg_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
             <column caption='Value K€' datatype='real' name='[Value K€ (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[val_tot_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
+            <column caption='Value Reg K€, Y-1' datatype='real' name='[Value K€, Y-1 (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[val_reg_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
             <column datatype='string' name='[ballerina_flag]' role='dimension' type='nominal' />
             <column caption='Brand' datatype='string' name='[brand_text (group)]' role='dimension' type='nominal'>
@@ -7799,6 +7830,7 @@
                 </address>
               </table-calc>
             </column-instance>
+            <column datatype='integer' name='[qty_reg]' role='measure' type='quantitative' />
             <column datatype='integer' name='[qty_tot]' role='measure' type='quantitative' />
             <column-instance column='[Calculation_1045961061373255682]' derivation='Sum' name='[sum:Calculation_1045961061373255682:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_1045961061373399043]' derivation='Sum' name='[sum:Calculation_1045961061373399043:qk]' pivot='key' type='quantitative' />
@@ -7808,6 +7840,7 @@
             <column-instance column='[Value K€ (copy)]' derivation='Sum' name='[sum:Value K€ (copy):qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_278097340794748928]' derivation='User' name='[usr:Calculation_278097340794748928:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_278097340795404289]' derivation='User' name='[usr:Calculation_278097340795404289:qk]' pivot='key' type='quantitative' />
+            <column datatype='real' name='[val_reg_eur]' role='measure' type='quantitative' />
             <column datatype='real' name='[val_tot_eur]' role='measure' type='quantitative' />
             <column-instance column='[date]' derivation='Year' name='[yr:date:ok]' pivot='key' type='ordinal' />
             <column datatype='boolean' name='[ytd]' role='dimension' type='nominal' />
@@ -8051,10 +8084,10 @@
               <calculation class='tableau' formula='[qty_tot]' />
             </column>
             <column caption='Delta Val %' datatype='real' default-format='p0%' name='[Calculation_278097340794748928]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='(sum([Value K€ (copy)])/sum([Current Year Value K€ (copy)]))-1' />
+              <calculation class='tableau' formula='(sum([Value K€ (copy 2)])/sum([Value K€, Y-1 (copy)]))-1' />
             </column>
             <column caption='Delta Q %' datatype='real' default-format='p0%' name='[Calculation_278097340795404289]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='sum([Qty (copy)])/sum([Current Year Qty (copy)])-1' />
+              <calculation class='tableau' formula='sum([Qty (copy 2)])/sum([Qty, Y-1 (copy)])-1' />
             </column>
             <column caption='Qty, Y-1' datatype='integer' default-format='n#,##0;-#,##0' name='[Current Year Qty (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[qty_tot]&#13;&#10;ELSE 0&#13;&#10;END' />
@@ -8062,11 +8095,23 @@
             <column caption='Value K€, Y-1' datatype='real' name='[Current Year Value K€ (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[val_tot_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
+            <column caption='Qty Reg' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty (copy 2)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[qty_reg]&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
             <column caption='Qty' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[qty_tot]&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
+            <column caption='Qty Reg, Y-1' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty, Y-1 (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[qty_reg]&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
+            <column caption='Value Reg K€' datatype='real' name='[Value K€ (copy 2)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[val_reg_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
             <column caption='Value K€' datatype='real' name='[Value K€ (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[val_tot_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
+            <column caption='Value Reg K€, Y-1' datatype='real' name='[Value K€, Y-1 (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[val_reg_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
             <column datatype='string' name='[ballerina_flag]' role='dimension' type='nominal' />
             <column caption='Brand' datatype='string' name='[brand_text (group)]' role='dimension' type='nominal'>
@@ -8137,6 +8182,7 @@
                 </address>
               </table-calc>
             </column-instance>
+            <column datatype='integer' name='[qty_reg]' role='measure' type='quantitative' />
             <column datatype='integer' name='[qty_tot]' role='measure' type='quantitative' />
             <column-instance column='[Calculation_1045961061373255682]' derivation='Sum' name='[sum:Calculation_1045961061373255682:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_1045961061373399043]' derivation='Sum' name='[sum:Calculation_1045961061373399043:qk]' pivot='key' type='quantitative' />
@@ -8146,6 +8192,7 @@
             <column-instance column='[Value K€ (copy)]' derivation='Sum' name='[sum:Value K€ (copy):qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_278097340794748928]' derivation='User' name='[usr:Calculation_278097340794748928:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_278097340795404289]' derivation='User' name='[usr:Calculation_278097340795404289:qk]' pivot='key' type='quantitative' />
+            <column datatype='real' name='[val_reg_eur]' role='measure' type='quantitative' />
             <column datatype='real' name='[val_tot_eur]' role='measure' type='quantitative' />
             <column-instance column='[date]' derivation='Year' name='[yr:date:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
@@ -8413,10 +8460,10 @@
               <calculation class='tableau' formula='[qty_tot]' />
             </column>
             <column caption='Delta Val %' datatype='real' default-format='p0%' name='[Calculation_278097340794748928]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='(sum([Value K€ (copy)])/sum([Current Year Value K€ (copy)]))-1' />
+              <calculation class='tableau' formula='(sum([Value K€ (copy 2)])/sum([Value K€, Y-1 (copy)]))-1' />
             </column>
             <column caption='Delta Q %' datatype='real' default-format='p0%' name='[Calculation_278097340795404289]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='sum([Qty (copy)])/sum([Current Year Qty (copy)])-1' />
+              <calculation class='tableau' formula='sum([Qty (copy 2)])/sum([Qty, Y-1 (copy)])-1' />
             </column>
             <column caption='Qty, Y-1' datatype='integer' default-format='n#,##0;-#,##0' name='[Current Year Qty (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[qty_tot]&#13;&#10;ELSE 0&#13;&#10;END' />
@@ -8424,11 +8471,23 @@
             <column caption='Value K€, Y-1' datatype='real' name='[Current Year Value K€ (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[val_tot_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
+            <column caption='Qty Reg' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty (copy 2)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[qty_reg]&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
             <column caption='Qty' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[qty_tot]&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
+            <column caption='Qty Reg, Y-1' datatype='integer' default-format='n#,##0;-#,##0' name='[Qty, Y-1 (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[qty_reg]&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
+            <column caption='Value Reg K€' datatype='real' name='[Value K€ (copy 2)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[val_reg_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
             <column caption='Value K€' datatype='real' name='[Value K€ (copy)]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])} THEN&#13;&#10;[val_tot_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
+            </column>
+            <column caption='Value Reg K€, Y-1' datatype='real' name='[Value K€, Y-1 (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;[val_reg_eur]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
             </column>
             <column datatype='string' name='[ballerina_flag]' role='dimension' type='nominal' />
             <column caption='Brand' datatype='string' name='[brand_text (group)]' role='dimension' type='nominal'>
@@ -8498,6 +8557,7 @@
                 </address>
               </table-calc>
             </column-instance>
+            <column datatype='integer' name='[qty_reg]' role='measure' type='quantitative' />
             <column datatype='integer' name='[qty_tot]' role='measure' type='quantitative' />
             <column-instance column='[Calculation_1045961061373255682]' derivation='Sum' name='[sum:Calculation_1045961061373255682:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_1045961061373399043]' derivation='Sum' name='[sum:Calculation_1045961061373399043:qk]' pivot='key' type='quantitative' />
@@ -8507,6 +8567,7 @@
             <column-instance column='[Value K€ (copy)]' derivation='Sum' name='[sum:Value K€ (copy):qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_278097340794748928]' derivation='User' name='[usr:Calculation_278097340794748928:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_278097340795404289]' derivation='User' name='[usr:Calculation_278097340795404289:qk]' pivot='key' type='quantitative' />
+            <column datatype='real' name='[val_reg_eur]' role='measure' type='quantitative' />
             <column datatype='real' name='[val_tot_eur]' role='measure' type='quantitative' />
             <column-instance column='[date]' derivation='Year' name='[yr:date:ok]' pivot='key' type='ordinal' />
             <column datatype='boolean' name='[ytd]' role='dimension' type='nominal' />
@@ -10585,7 +10646,7 @@
       </viewpoints>
       <active id='-1' />
     </window>
-    <window class='dashboard' maximized='true' name='YTD Overview'>
+    <window class='dashboard' name='YTD Overview'>
       <viewpoints>
         <viewpoint name='Total Retail Sales by Brand, YTD'>
           <zoom type='entire-view' />
@@ -10597,7 +10658,49 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='-1' />
+      <active id='3' />
+    </window>
+    <window class='worksheet' maximized='true' name='Total e-Commerce Sales by Brand, YTD'>
+      <cards>
+        <edge name='left'>
+          <strip size='295'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='29'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='128'>
+            <card param='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:galleria_flag:nk]' type='filter' />
+            <card param='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:ballerina_flag:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[Multiple Values]</field>
+            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:ballerina_flag:nk]</field>
+            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:business_area_text:nk]</field>
+            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:galleria_flag:nk]</field>
+            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:is_ballerina:nk]</field>
+            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:is_galleria:nk]</field>
+            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:sales_channel:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
     </window>
     <window class='dashboard' name='YTD Country'>
       <viewpoints>
@@ -11492,48 +11595,6 @@
           </strip>
         </edge>
       </cards>
-    </window>
-    <window class='worksheet' hidden='true' name='Total e-Commerce Sales by Brand, YTD'>
-      <cards>
-        <edge name='left'>
-          <strip size='295'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-            <card type='measures' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='29'>
-            <card type='title' />
-          </strip>
-        </edge>
-        <edge name='right'>
-          <strip size='128'>
-            <card param='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:galleria_flag:nk]' type='filter' />
-            <card param='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:ballerina_flag:nk]' type='filter' />
-          </strip>
-        </edge>
-      </cards>
-      <viewpoint>
-        <highlight>
-          <color-one-way>
-            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[Multiple Values]</field>
-            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:ballerina_flag:nk]</field>
-            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:business_area_text:nk]</field>
-            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:galleria_flag:nk]</field>
-            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:is_ballerina:nk]</field>
-            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:is_galleria:nk]</field>
-            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:sales_channel:nk]</field>
-          </color-one-way>
-        </highlight>
-      </viewpoint>
     </window>
     <window class='worksheet' hidden='true' name='Weekly Conversion rate by Channel'>
       <cards>
@@ -20175,6 +20236,154 @@
       6U9+tpOv7aoK5xxzR+YAEP2r1oQsLaVClufIcwK4DWjQpWLclL4X5cB9ywjWhw8fPrDr8t1B
       9x8KIhGEzuiIQ2dF7PR6Qw+zUIduN4oPF95EvrCIk4sLmEvGALewMc0ypFJCKgWVS/w/9hy/
       yYrxJX0AAAAASUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='192' name='Total e-Commerce Sales by Brand, YTD' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAAeaUlEQVR4nO3deXxU5aHw8d9ZZp9JZrLvCUkkgYDsqyyCggsoFbeqrbV+attb67Xbbb3v
+      29v6vm/bt/fWvvXa3qu11bpWVASpioCyKQiyI4QlEMgO2SeTWc/MnPP+ETYRggRXzvP9D2bm
+      nGeW3yznnJxHMgzDQBBMSv68ByAInycRgGBqIgDB1EQAgqmJAARTEwEIpiYCEExNBCCYmghA
+      MDURgGBqIgDB1EQAgqmJAARTEwEIpiYCEExNBCCYmghAMDURgGBqIgDB1EQAgqmJAARTEwEI
+      piYCEExNBCCYmghAMDURgGBqIgDB1EQAgqmJAARTEwEIpiYCEExNBCCYmghAMDURgGBqIgDB
+      1EQAgqmJAARTEwEIpiYCEExNBCCYmghAMDURgGBqan8Xtre3E4vFPquxCMJnrt8Ann++mtra
+      js9qLILwmes3gOrqANu3d31WYxGEz5z4DSCYmghAMDURgGBqIgDB1EQAgqmJAARTEwEIpiYC
+      EExNBCCYmghAMDURgGBqX7IAJFSLglWVkD6Htcuqgs0mo3weKxc+Ff0eDNcfSZFxum24HAqq
+      LIFhoEWj+LsTJD7JEZ4qq4D7fj6Bqb27uO+hAzR36yBJOL1OvI7TW9YJd0foiegYZ1mc4rCR
+      lqIS7wnTEzXOer3jLn/gFh68IsKf736V5w9/AvdH+NwNKADJZqVoWBHzbh7K7ImZZLkUDC3G
+      wU2b+d8/3MP+T3qU/bC4Hcz8wfU8OMdz2iVBXv/FMh5a0UXwLEVmTR3Jb+8r5sDDy/jd6gAx
+      /VMfrvAFM4AAFLKGDOKu74/m8rwk9Xua2RdKgqJiszvwIONOS6WywkZPWxTD5SIl6md/S4Ks
+      kjTy021YJINYMEx9TQfNAYXsQWmUZsn0RCHFY8OuJGna3cLBTh3FbiW/NIPiLCs4feSkqki9
+      J0ejJ5Ic2dvIKoeb9Hwfl5RaaNvfRUNbD3uPaiQM8ORnUlXmwi7pBDsCHD7Ug5bqpao8FY/d
+      Ql5VAdONEA276jnYa6dwcDr5PgsWyUAL9FJT00NHMPnJPerCF8b5B2B3MnRUAWMKk2xesoMn
+      XzzMgfY4htVGQbmdECr5g8v54S+KaNvVhV5cQNq29fzqtSS3/mAC1wxLxa4YhFrbWPrU+zy5
+      OMKoq0Zw7/w0uvyQl+vGa4mz/pHX+dHLvRSOGcx3vjOCaRVOjGgcQ1XwN50cTjISY+uCdWxd
+      4GLyjWP48T+lsvL593n2rXaCgCUvlzu/N5FbZmaQIiVoP9jE4md3sD+ljNvnlFDkg6I7pzA2
+      keS1//Ek/3Uwk1t+PI25FU4cikGw+QgL//w+z64Sfxh0MTr/ADx2fHke3K1tvLOumRpLOjfc
+      nkOGWyEe6WRldaTvem4PwwYn+WDPId5c301Xr4OmHYdYsFlHt9sZObOcMdOKeOftY1+YFJ3O
+      PU28t9LO9NsHMWxSDjnLEoy7uopx6RE2LqmhJuJm4vQC0j/2YGUqrxnNbdMd7H1tO7tCDirG
+      53Pt3DICb7by9saj5MxMpXPDQdYdirDnEOixGIe3HGLBBo1EqpfJk/OYMSmdNzeLPwy6GJ1/
+      AIaBYRhIsoQiS5CXw1duHcGQPBvBzv0cfKaFVgA9yv6NNTz1bC37WmLE3dDWa5CT68LusuGy
+      yqgWCzbbseV2tPPm4l2s3OUld14h2R472U43gyvttO07yMuPbmeTtQBXaQZTPvZg7VSN8EJr
+      I889upVNUQ9T/TZ+cJ0HOVDN6vdbuWq8nQMrq3nq2G8AZ5qGv1enJNeJzWvDYVWw2y3IYtPP
+      Ren8N4MGonQ1BQjk5DDryiKGh5p45NcreXpT9MPXC4U4UN1KdXOMuAEVM4Zw0+wsotXNrN98
+      hP1HtA9fP5kkEtfRdQPdADAwjCSJhISiyFgsoFpk1PN6ISbR4iA7HGR4ZBSbgstnw5o0SCaP
+      b/OxkJVjwyIDVit5U4dy02QvibpmNr7fRkN77NPbqiV87s7/E0ALs2trAxumZHPN1aN5cHSY
+      3qiOJ98Cp/5O1CGpG/RtWFHIKUunsCCNzNvtjDMUfDlWYufYXBSJRKg5GOG6aRX8+JECeg0r
+      2XkutHUfd7AxNq5p4d7JxXznoeu5OaHizbTRtWUPDXVhgqUa8bjCiDsu59FZMdb+bQU7izMZ
+      PiSVHK+LUUkLmTkOkkfP+1ESviQGsCNMp2tfPU/+52YWbwnizPdRWZVFtiVCzTtNHDrjbZJs
+      XlbLng6dnFIvrmAbW/dHz3jNU2n+EFte3cm7RxWyiz1I/iBtHRHi5zHaIys28Iu/HsHIS6ei
+      xEm4+gBPP7uXba06wW2HeeP9DsIpqQyuTCfdiNO8poaN3SqZeQ7i7X4am0No516N8CUlGYZx
+      1v0/99zzD7ZvP/vbnyRLyKd8IzEMA10HJAlFBuPE15k+snJsD64BBiABum7AseXoyb6dUX3X
+      M0gmP3o7JMAwSJ5hm70kSchnWO/x8RwbJLrOiZ1ep96H47c7vj7j2PqkY+uTThun8OU34D3B
+      0PeCOePWcePki/dUevIsL5vTlnP69c56u4+s9szrPdt44Mz34WzrO+v9Fb60vmTHAgnCJ0sE
+      IJiaCEAwNRGAYGoiAMHURACCqYkABFMTAQimJgIQTE0EIJiaCEAwNRGAYGr9Hgw3dWo2xcXW
+      z2osgvCZ6/dw6O7ubjRNHA0vXLz6DSAajaLr4mQ5wsVL/AYQTE0EIJiaCEAwNRGAYGoiAMHU
+      RACCqYkABFMTAQimJgIQTE0EIJiaCEAwNRGAYGoDODeoQSIWIRyOENcBJCRFweZw47TKSNKF
+      TSRxdNn/4Ts7x7PoX2b3TcBxzuEY6EmNcCiMljSQVBtOpwOrKn9oKlVDTxAN9hA+dmppSVJQ
+      bXacDhuKfIHTrh5eya9eqGX0V67jyqG5nPsA8iTR3gCa6iHFccpToCeIhsPEJRsOhw3103p7
+      0pNo0RC9kRMPBopixeFyYlVkLvAp/FIZQAARatf9ncf/uoQmOR2XTUWxu7lk2m3cfcN4Mmzn
+      XkL/zue8ywZ6IkL91iW88PJaDvnjKOmVXDP/ZmaNLcalnnwmw52NvPy7e3i5NpvsVCuS7CCt
+      YhI3zr+WMSVpWD7TGWDaWf6re1k5+nc8cmvpyf+ONPLuwpfYa5vC/DmXUZDyKa0+3M7WF3/P
+      g4sOk5mdglVRsbmLmXrDLcydWIrHqnwu8zB/HgZ8dmjvsNl85avfZOogG117XuU3Dz7Mwson
+      +OYlAZoO+XHm5ZLsqqNXzaYw202orYmWjgBaUsLmyaKkvAivVQI9Rk/7EZqaOwgmZCLNARK6
+      ARgkIn5a6htpC0TQJRup2QUU5qbhtJx8a4wF29mw/E0Sk/+VP87NYMfCv7B623YqywupzFBO
+      G3QhE+98gH+bdwnRjr28+th/8eLyPIq/NhGa99HjrSBfPkpdW5y0wkGk4ael+QhdIQ1DsuIr
+      vISybBcyBlrET0tdA+1BDbWzAf/xjxaShNobONzQQShhoDpTyS0oJttn57TRfJQrl9Ezb6VS
+      TSXTBYHGXdREfRSpAZo7etHtXnKLBpGbaoVEiLamBlrae4lLdnLKKij02SCp0dvZQmNLO6GY
+      gezwUVhcSEaK/bQJvn0MnTqd+x+YS1Gim92v/DcPvfAmpRXfZHyWm3i4g4baerqiBlZPBgUF
+      +aR5rMhGjK6Gw9S3B9B0BVdaDsXF+biMIO0tjTS395JAxZ1ZRGlBGjZZo6OulqbOEJoh40jN
+      oqAwD59T/UJEdkGnRwdAtpA27DImFDzL+3Xt+N2bWPC7lfjm3oj9yFak8pmk4GTre+9xoLmL
+      mKbR05NkxG33cuvoNEIt1ax8/S12tcRQXSnYuzuIuw0wkoRaq3nnrc00hcJogV5iacO57qY5
+      jC3xnhi4rBi4nCkkA36CWjaqw4dHt2FR+vskkbFnDGHE0Gze2n+EmHaUTY/9knWjfsK1yR1U
+      JzKZOMuH1rWTdet2cTSqofnb6EqbxY/uv4Zcw8++dYt54506NKcLr9FNeyDn2LJDHHx/FWuq
+      OwglIoQjOjnD53LTvPHk2M/1YHayc+mrHPSM57r5kzmy7Pf8Yu8Yvj/RwYGDDbR0xymc9g3u
+      mltCcM863li1ndaQjpSIIOVO47avzSJfD3B4xzus2dVCOBqj269RcvnN3DZzOD7HmROUVR/D
+      L63E8/o+WuNxkokudi5fwPLtXUh2haRho3j0DGZPG0la73ZeeX4ZLYYFq6Tiyilh2twbyO/a
+      wrIlqzkYseG0qzhzx3LD/Mnk2Y+yZdkKqoMxYpEgoWQao66ez7UTS3B9AX6BXngAeoJgcw0H
+      /R4KctwARAI9hNuiXHPlNxhdmYOzt4XeafOYmZWBk142PPVLnnl3P3OHD+HA5k3s6Urnyrtv
+      Ynyhm6NLf8U71TIgYfUUMGHeMG7OTyHZuI4nntxITX0rVSVe+qbFlrA6s7h04gS2LFrI0/oI
+      fLqPqvEjyE3p767paL3N1DeHSElJw2pRwTDoqNlDcMoMvj5zGFn2GB32KmZ9dRIZWS6STUv5
+      5Q/XstN/JSmJfaxfsRvv1fdyx/RBOOtW8usFx+fGkUktncYdM0tJt/Syd83LLHlvE3XTxpOT
+      O4DH17AzeObtzJrTy5ZFz7Js3yG6ZqhsXb2d3twp3DV3IlnaXv7884dYPm4yd1fayam8jFsn
+      FZLpjLNvyZ94dN8BusdX4HM4zvxoaAEOH24k7vOSabGQaHmHRf9oYNS/PMD1g220bHiVF9Zt
+      ZGdRMWN7tvFuk407f/JdLi+yE2hrIKRGaG3YT12Xl+l3383UQTLt9V24rDKS7KB8yi1MGZqL
+      I1LH239/hd27augYXYLrnG8In74BBxBq2M7rf9fYnmIhGekiPuYmbq7yQCtItlSKqsYwdmgu
+      dgl0h5Xkjg0sXNpAIJog2BgmkRYhFvJztCmAkjuBQUVeLDJYLHLfLDCShKRA27bXWflaF1q4
+      k/2HNUbEEycnqTAMtEgHdfUBfLlu6jZvQbni61R4W1m5ppkRo4ZT4HOcnMUm1MH+1Qt4pN6H
+      oYUIJAcxa/YIfE4JkLCnVzF91ggyLYBhRU12seO9tzhwNEg82UpHqJtwKEmkt5bm3ixmDy8n
+      xQKoCsqJKWgcuKVG3nruLdqjMYLtdXQZBQz0L0ulrCLKM5wQi+BM8eJoMTB62mlsa6fmyCpe
+      aN2GBYPmcDtqcwBlWAqJ3mbWr1pBWyBOqKWWZksuSf30qT2CNO5ZyXOPHMKdiBMKJ5gwZwZD
+      Uh0YBw9w2DOKbw9Nxy5BUUkZvrXvUH+0g3FDxzC9ZDkbXnqSaq+X4iGTmDbJjq14CCWZa9iw
+      6C/s9WYxaNw0LpcUJMNJsnsZC//SSq8WorW2GWv5EOJfkJkHBxyA6s4gt2wIldkOLE4vBYMr
+      GeSGtlawu1zk5PW9+CFB46bXWbQhwOCqCgqdMn69idrI8SXJyNJHtzzoWpT9qxewtDqN8ROG
+      4o61EGhs+ND3aMPQ6dn1NktrHNx0151M2rmKLZ1beONVkIpGMtpy2o851Y43r4yqqjwU1Y63
+      oJTywkzsllaQJNJKy/pe/ECy6xDr31pNddTHkIqhOGUXzW939l0oycgoyGf6CG/fzHNPrECZ
+      eAVDfTrd9Rr7Ggf6KJ+FYWDoFrwFg6gYkocDGDZ8BBmD3fiP7GLV6yvpzB3DsKEuQtZ2dnWe
+      6auPisuXT0mRi4NvraezeA7zRw8m1aYSk2VkTSN+bIoo3dDRFRm7qmDPHcUNX02htqGN1iM1
+      bFv+HBHPT7h12BiuvjGNuqZW2g5uY/VLS/Hk3MHI9qU8+Vodl84cR5UthDMS4Ys04/KAv4XZ
+      0gq5dMI0rrhiBtMmjaI03XHiRSxJnLI5VKOz7iB+WxHjp0xn0ohC9N5A30XuVDJzrYQO7aG2
+      PkAs2Mahhg4SCR09Gedo3X60vJFMnzaZIXkepHjktClLDfRQB21dIaTUQkZMGkNmzwHe+aCT
+      nKJC0l3WD4dlc5NdMY4rrpjJ5dMnM7IsB/cpWzxO3YSbCHbS0B7EUzqaqVPHU+6GEDpICnZf
+      CWm2WrZvO0CvFuLIkSP4e8J9N+w6xPZGG8OmT2fauCqy7TFCsYE+ymeRkUtZjh0l6aJ0+GQu
+      nzmdkaVuwj0hwoGjHG2VKBs7nSnjB5OqGCS1M73d2knLreSya2/h29++gdLAZhav3I0/kkAp
+      G0VVfAOr32smFOumpvoDOgw3pfnZdG7fQG3EyZDxU5k5fTI5Rj0NLUdpqt1HfSiNqonTuOKy
+      CmydbbRH4gSbq6k1ipk8YxrjKgtwGFHOPT3iZ+fCfwOck53yiVPIfXQJv/j+EjJHzubqkkJo
+      ApQ0hkycSkPjizz9b/fxfMlELvMZGJKEYrUzZMJlLH/0Ye7bmMfoseWoKWmcupVVkhRSR81h
+      7va/8t/33w3uHIZfNo2vl/nZtGI1udlzGVXgO/fWlzOwZJUyqmwjL770a+5fUsaUeZVkyyoS
+      Mp6soVw5ZyRPv/S/+P6rhUyoTCWqHNtmWTKVGy59h8fv/xYLC6sYXpVFjrv3jOuo+fsD3PEP
+      C5BKxaT5fPP7Qz7e4GyFXH7jdfS++BIP/2QRIclG3iWTmX/3cNIsQ6koWMOLv76PZaUTuCzP
+      hsN19j0TktVDbtWVfMOm8vhjT/L7+D386y2jueM7zTzzzM/57mM67vzhzL5hPmNKPGgHE3yw
+      +GEe39NORHFRdOl87pycj9TwHpsWPcPj9Z3EcVM643Ym5KSQ7r6WiUv/k3/77hqKR4ykyJGJ
+      9zyfi0/TAM4KYZBMxIknDFSL9bSJqw30ZAItlkCxObAce+UZegItppFIGkiqBatioOkydpsF
+      SU+SiGvEEzqGrGKRdeKoOK0qhh4nFo2jI6GoCpIBkqpiUY+/a/fNWp/QYmiJJCCjWqwosk4i
+      YaBaLShy3w4xQ9eJa1F0xYbdcnoSOvFIhKTqwH58E6thkExoaFoCHRnVqoKWQHbYUSUwknFi
+      WhzdkFFVCd2QUC0WVAWSsSixuAGygqrKYBgollN3bOnEo1G0hH5sr4eEolqx2RV0LY6OgmpR
+      MeJhooYFl80Chk4ykSChS1hsFiQjSULTiCeS6EjIiorVakWRjj8eOpKsoioGSUPGarGc3LFo
+      6H2PuaFgs1mQT3mOdNmK3aqc+HdSB0lRsVgtqIoMyQTxuEY8qWMg943bqoCeIK7FSeg6IKNY
+      bcd2Rupo0SgJHWRFRZHAQO57br4A20HFaVEEU/sCbIkVhM+PCEAwNRGAYGoiAMHURACCqYkA
+      BFMTAQimJgIQTE0EIJiaCEAwNRGAYGoiAMHU+j0cWlEU5DP+1YcgXBz6PRpUEC524u1dMDUR
+      gGBqIgDB1EQAgqmJAARTEwEIpiYCEExNBCCYmghAMDURgGBqIgDB1EQAgqmJAARTG0AAYfa/
+      /Rfu/8o0Znz3D6w/0Mnxs4dGAwd47J7LufZr3+Ov73UCzax67Jf89LeLOND2cc8RfpRFP7qO
+      6bPn8K1Ht3B85i2MEDtfeYhvz5vKbb97k5aeOMl4HU/8863c//zu878bgsAAp0nV9QSeocO4
+      tCNBa1sn4bJ03DJEW95njzaH6cP3H5voLodJt9/HSMOBx22DaDdN7Trphek4SBILBwmFweVL
+      xaacXH5Si1F8zY2U79jEPm0sw61gBOvY25pJaWkBjR4dwwBZLebWX/6eebYcSMbo9fcSU5x4
+      vU5UYviP9CD50kmxKaaa+lP4+Ab+FciST0VpkLrmNgKhJJCkbft2mDqOghNXCrJryR954pX1
+      NPcCu57jm3c9yq5jl9VuXMzfHl7EvjOcPt/iqaKyaBdb9kQBg1BTIz0pDrLys3Eeu46R1Fj7
+      6D38cW07dB9i+eN/4g8vb6IdgAO89LPfsLDaf14TrwrmcgG/AeyUDBlE4Ggb3cEIutHKlk0a
+      k0bmfSIDs1jTKB9WwOFdB4kZYRrqu3CqKeRkuD6R5QsCXOCPYGdxJUU9TdR19qK1bmYnMxhb
+      cO7bfRySaiG9dCieQzuo726nOSDhTCsh2/3JLF8Q4EK3ArlKGJHXxf76burffRdp6kRyzn2r
+      j0dScWeUUew8wJat9fiTMVKL8k98/RGET8IFbgZ1UzGigIbaraxdnWTi5Oz+Z/92uvBIEUKh
+      BNHuNg7vq6Wjn6E53Znkl6i8v3Y3WjyFwoJ+3v5VFatd6ZvdMBqhtXoftcEQX5DZOIUvqAve
+      D+AeMppBh1ax3BjBhKxzLK5kHFeV1fPkz37Kvz/1No26kzNP3dxHcbrJzMsldmg/fk8Z+a5+
+      8nJnUFqRjbbtBX77y//HP/Z3IRtK/0EKpjeAs0LoRANddId03GnpeGwJuhqb6ZTSKM1PhUSM
+      nq42dFceGW6JUFcbQcOF15uCTYnT09xEazCOxZWC26Ggx2RSstNxnNgMGqe7qZ6gq4hCn0os
+      7Ke9NYg1LYvMVDsxfwudCRdZvhRU2SDQepiwo4jcVIVY0E9HWych3UJKugf8ESzZOaQ5VLEZ
+      VDgjcVoUwdTEoRCCqYkABFMTAQimJgIQTE0EIJiaCEAwNRGAYGoiAMHURACCqYkABFMTAQim
+      JgIQTK3fP4pPJpOIY+WEi1m/AcTjcXRd7+8qgvClJr4CCaYmAhBMTQQgmJoIQDA1EYBgaiIA
+      wdREAIKpiQAEUxMBCKYmAhBMTQQgmJoIQDA1EYBgal+CAGI07XiDvzz6BO8dCn7egxEuMgOY
+      JA8MwyDatpe3l7zI62uraYuqFI27k5/+7BryB3gaZsMI07B+MX97YTm7WgKoqYOYdP2dfGNe
+      JfGwn462DoKaODRb+GQNaJbI+JFtvPTUC1S7p/DDPzzAYJ9G/bt7CAN6IkY4GCSiJTEkBavD
+      hdtpQ5XjBDsD6C4f9mSAYAzsHh9OS99Se7Yt5k/LW5nx3X/nf1blEO+uZeuabdR1V+IFDENH
+      Cwfp7owR12Xs7hQ8dhUwSMbC9AYjxHUJi92Jy2XHoshIRpJYqJdARANJxeby4LZbkMWp0oVj
+      zj8APURt9XYajBKum3MFFVkOJBwMmjkJ9AQ9TZt45bk32NrUiaapZIycxW23XMWwnFqe++cH
+      6f7qbxnX9hyrGpxcedcDzBzUt1h/VzuSx0O6XUU3wJFWztQby4EIh2sgGWpj95qF7GitobYx
+      SP68+3lg/qXYYq1se/NFFq7ZT29cJmXQGK6ZN5dJg7OQevbx5nMLWLGvlaTFQ/n467n1+sso
+      ShnQB59wETr/V4LWQ1tzF7JzMFkZno/MwKLY0hl984+5rSyNxKHV/PmZLXxwcDhlxyYPa9u1
+      mtqyefzg56PIspy8XVbZKErfX87S11/j6KUVFOUVUlJagM/Wd3kiLpE7fDY3fe+f8K/4LT9d
+      u5P2uZXY9y3lpZURZv/kP5iR08P6l55h9cp15GTMIPqPp1kan8GvH56Fo+sDFv1tAYs3lvC9
+      2cVYEISBBGDo6DogSx/9KiHJWFPSsdXvZs3yIIlQM/6OKL5Y/MRcXQF1CLfcPAbfaT+/naVT
+      +No3vLz77kZ2b1rFjqhM3qiZXD1rJAB2XzZFhXl47RZiThuyFieq6wT376Wn8itMLk/BSgrD
+      Li1n5YpmWjr30ryzA09xNxuWv4mk9dKTkDna2EKIYrznfceFi9H5B2BxkepzkDzaiT8QxUix
+      n/gU0BMxDm9czMJ3e0kv8GKN+QnFEh+aqPqSMaM+8uLvo+AuHME1t49gtuZn39oXeeqFZ7CX
+      DmZKP8MxDANJkU9szpIkCcnQSeoJ4nGNQEcbrd4wEuAoHs2Mqnxs532nhYvV+QegeiiuGIx3
+      51reXb+NvGvGkutMcGR3PcbgXOp3baYn/1vc+/WR6AfX4K/Z9KGby2fcShShYfceOqU0BpUW
+      kmp3k1mQhZMkevLsQ5EkmfTSclwvbGJrwwgmZQTZv68eyVNEXvol2AensjlxCVfdOptCF/S2
+      t9IRFt//hZMG8Gqw4Csdz7VXabz93tv8+T+Woisq7pSx3DK0mOKhwzCWvMzvWzdQXuQipthQ
+      zrlMBSXWyc4NK3jt5TBaAmQJfLO+zhWXOIl/cJabSTKZVVdz3eiFrHjs//IWBlJKERNnTaIk
+      PZfim+6gbsGb/PE367Fb7Hhyyhg75Qo+obm8hYtAv5PkRaPRs54WRdfCdHe00uEPoRkyDk82
+      hYU+pHAnzY1thAwrqV43smZgSfWS5jXoqGkkmX0J+amnJ2GQiPTS0dGOvzdCIgmKzUV6XgGZ
+      boVYoJOOHg13ejZep4rmb+Zwl0phcSYOySDW207zkU4iCRmHN4OcrDScVgXJiNPb2kxjZxDd
+      kLG5vWRmZZHqVMX0qQJwAQEIwsXgS3AohCB8ekQAgqmJAARTEwEIpiYCEExNBCCYmghAMDUR
+      gGBqIgDB1EQAgqn9fw4/str0EvZLAAAAAElFTkSuQmCC
     </thumbnail>
     <thumbnail height='192' name='Weekly Sessions' width='192'>
       iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
