@@ -24,7 +24,7 @@ get_intervals <- function(ref_day){
         
 }
 
-get_path <- function(key, base_path = "k:/dept/DIGITAL E-COMMERCE/E-COMMERCE/Report E-Commerce/Ecommerce_report/"){
+get_path <- function(key, base_path = "k:/dept/DIGITAL E-COMMERCE/E-COMMERCE/Report E-Commerce/ecommerce_report/"){
         
         
         
