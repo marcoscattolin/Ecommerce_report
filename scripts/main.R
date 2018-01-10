@@ -83,13 +83,6 @@ message("------ EVALUATING LAST WEEK ANOMALIES: DONE -------\n")
 
 
 
-# DOWNLOAD WCS DATA -------------------------------------------------------
-message("------ DOWNLOADING WCS DATA -------\n")
-download_wcs(remove_temporary = F)
-enrich_wcs()
-wcs_save_dataset()
-message("------ DOWNLOADING WCS DATA: DONE -------\n")
-
 
 # END OF SCRIPT -----------------------------------------------------------
 cat("Script completed, hit Return to finish...")
