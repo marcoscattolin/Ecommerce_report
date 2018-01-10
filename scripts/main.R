@@ -11,8 +11,8 @@ library(curl)
 message("\n\n\n\n\n\n\n-------- STARTING SCRIPT --------")
 
 
-source("helpers/reporting_functions.R")
-source("helpers/sku_utils.R")
+source("scripts/helpers/reporting_functions.R")
+source("scripts/helpers/sku_utils.R")
 
 
 # INPUT -------------------------------------------------------------------
