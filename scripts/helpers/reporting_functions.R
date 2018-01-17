@@ -1032,6 +1032,28 @@ no_sales_anomalies <- function(ref_day){
 }
 
 
-
+price_anomalies <- function(ref_day){
+        
+        
+        regular_price_anomalies <- ecommerce %>% 
+                group_by(isoyear,isoweek,sku_eqv_id_std,country_code,brand_text) %>% 
+                summarise_at(vars(val_reg_eur,qty_reg), sum) %>% 
+                filter(qty_reg != 0) %>% 
+                arrange(sku_eqv_id_std,country_code,isoyear,isoweek) %>% 
+                group_by(sku_eqv_id_std,country_code) %>% 
+                mutate(avg_price = val_reg_eur/qty_reg, ix = row_number()) %>% 
+                mutate(delta_price = avg_price/lag(avg_price)-1) %>% 
+                ungroup() %>% 
+                filter(isoyear == isoyear(ref_day) & isoweek == isoweek(ref_day) & !is.na(delta_price) & delta_price != 0)
+        
+        write_csv(kde_based, path = get_path("regular_price_anomalies_output"), na = "")
+        
+        if(nrow(regular_price_anomalies) > 0){
+                m <- sprintf("WARNING!! found %s price anomalies, check file at %s",nrow(regular_price_anomalies), get_path("regular_price_anomalies_output"))
+                message(m)
+        }
+        
+        
+}
 
 
