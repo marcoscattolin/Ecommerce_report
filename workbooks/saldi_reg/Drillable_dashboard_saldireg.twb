@@ -1078,6 +1078,601 @@
       </semantic-values>
       <date-options start-of-week='monday' />
     </datasource>
+    <datasource caption='retail' inline='true' name='federated.0tdagj40o6quof10vepv00yk6aih' version='10.4'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='retail' name='textscan.1twywai0h745zc11xjtts0f1swfz'>
+            <connection class='textscan' directory='K:/dept/DIGITAL E-COMMERCE/E-COMMERCE/Report E-Commerce/Ecommerce_report/data/tableau_repository/retail' filename='retail.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.1twywai0h745zc11xjtts0f1swfz' name='retail.csv' table='[retail#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=',' text-qualifier=''>
+            <column datatype='date' name='date' ordinal='0' />
+            <column datatype='date' name='ref_day' ordinal='1' />
+            <column datatype='string' name='country_code' ordinal='2' />
+            <column datatype='string' name='ecommerce_country' ordinal='3' />
+            <column datatype='string' name='country_text' ordinal='4' />
+            <column datatype='string' name='currency' ordinal='5' />
+            <column datatype='string' name='brand_code' ordinal='6' />
+            <column datatype='string' name='brand_text' ordinal='7' />
+            <column datatype='string' name='sales_channel' ordinal='8' />
+            <column datatype='integer' name='isoyear' ordinal='9' />
+            <column datatype='integer' name='isoweek' ordinal='10' />
+            <column datatype='integer' name='qty_saldi' ordinal='11' />
+            <column datatype='real' name='val_saldi_loc_curr' ordinal='12' />
+            <column datatype='integer' name='qty_reg' ordinal='13' />
+            <column datatype='real' name='val_reg_loc_curr' ordinal='14' />
+            <column datatype='real' name='exchange_rate' ordinal='15' />
+            <column datatype='real' name='val_saldi_eur' ordinal='16' />
+            <column datatype='real' name='val_reg_eur' ordinal='17' />
+            <column datatype='integer' name='qty_tot' ordinal='18' />
+            <column datatype='real' name='val_tot_eur' ordinal='19' />
+            <column datatype='boolean' name='ytd' ordinal='20' />
+            <column datatype='boolean' name='mtd' ordinal='21' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[date]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>date</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;date&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ref_day</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[ref_day]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>ref_day</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;date&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>country_code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[country_code]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>country_code</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ecommerce_country</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ecommerce_country]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>ecommerce_country</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>country_text</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[country_text]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>country_text</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>currency</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[currency]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>currency</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>brand_code</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[brand_code]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>brand_code</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>brand_text</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[brand_text]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>brand_text</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sales_channel</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[sales_channel]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>sales_channel</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>isoyear</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[isoyear]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>isoyear</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>isoweek</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[isoweek]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>isoweek</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>qty_saldi</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[qty_saldi]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>qty_saldi</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>val_saldi_loc_curr</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[val_saldi_loc_curr]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>val_saldi_loc_curr</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>qty_reg</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[qty_reg]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>qty_reg</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>val_reg_loc_curr</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[val_reg_loc_curr]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>val_reg_loc_curr</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>exchange_rate</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[exchange_rate]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>exchange_rate</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>val_saldi_eur</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[val_saldi_eur]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>val_saldi_eur</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>val_reg_eur</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[val_reg_eur]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>val_reg_eur</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>qty_tot</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[qty_tot]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>qty_tot</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>val_tot_eur</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[val_tot_eur]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>val_tot_eur</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ytd</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[ytd]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>ytd</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;bool&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>mtd</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[mtd]</local-name>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias>mtd</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;bool&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[retail.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='quote-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Qty, Y-1' datatype='integer' name='[2016 Qty (&apos;000) (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;    [qty_tot]&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;    [qty_saldi]&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;    [qty_reg]&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;END' />
+      </column>
+      <column caption='Value K€, Y-1' datatype='real' name='[2016 Value M€ (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;    [val_tot_eur]/1000&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;    [val_saldi_eur]/1000&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;     [val_reg_eur]/1000&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;END' />
+      </column>
+      <column caption='Qty' datatype='integer' name='[2017 Qty (&apos;000) (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])} THEN&#13;&#10;    [qty_tot]&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])} THEN&#13;&#10;    [qty_saldi]&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])} THEN&#13;&#10;    [qty_reg]&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;END' />
+      </column>
+      <column caption='Value K€' datatype='real' name='[2017 Value M€ (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])} THEN&#13;&#10;    [val_tot_eur]/1000&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])} THEN&#13;&#10;    [val_saldi_eur]/1000&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])} THEN&#13;&#10;     [val_reg_eur]/1000&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;END' />
+      </column>
+      <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[pcdf:sum:Calculation_1045961061446836253:qk:4]&quot;' value='Delta Q' />
+          <alias key='&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[pcdf:sum:Calculation_1045961061446877214:qk:5]&quot;' value='Delta Val' />
+        </aliases>
+      </column>
+      <column caption='Year' datatype='integer' name='[Calculation_1045961061395996694]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='year([date])' />
+      </column>
+      <column caption='Tot. Qty' datatype='integer' name='[Calculation_1045961061446836253]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[qty_tot]' />
+      </column>
+      <column caption='Tot. Value K€' datatype='real' name='[Calculation_1045961061446877214]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[val_tot_eur]/1000' />
+      </column>
+      <column caption='Delta Val %' datatype='real' default-format='p0%' name='[Calculation_278097340794748928]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='(sum([Value K€ (copy)])/sum([Current Year Value K€ (copy)]))-1' />
+      </column>
+      <column caption='Delta Q %' datatype='real' default-format='p0%' name='[Calculation_278097340795404289]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='sum([Qty (copy)])/sum([Current Year Qty (copy)])-1' />
+      </column>
+      <column caption='Tot. Value M€' datatype='real' name='[Calculation_938719099500756992]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Calculation_1045961061446877214]/1000' />
+      </column>
+      <column caption='Qty &apos;000' datatype='real' name='[Calculation_938719099500904449]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Calculation_1045961061446836253]/1000' />
+      </column>
+      <column caption='Qty (&apos;000), Y-1' datatype='real' name='[Current Year Qty (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IF [Calculation_1045961061395996694] = {max([Calculation_1045961061395996694])}-1 THEN&#13;&#10;[qty_tot]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
+      </column>
+      <column caption='Value M€, Y-1' datatype='real' name='[Current Year Value K€ (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[2016 Value M€ (copy)]/1000' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Qty (&apos;000)' datatype='real' name='[Qty (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[2017 Qty (&apos;000) (copy)]/1000' />
+      </column>
+      <column caption='Value M€' datatype='real' name='[Value K€ (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[2017 Value M€ (copy)]/1000' />
+      </column>
+      <column datatype='string' name='[country_code]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column datatype='string' name='[country_text]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column datatype='date' name='[date]' role='dimension' type='ordinal' />
+      <column datatype='string' name='[ecommerce_country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column aggregation='Sum' datatype='real' name='[exchange_rate]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' datatype='integer' name='[isoweek]' role='dimension' type='ordinal' />
+      <column aggregation='Sum' datatype='integer' name='[isoyear]' role='dimension' type='ordinal' />
+      <column-instance column='[Calculation_1045961061446877214]' derivation='Sum' name='[cum:sum:Calculation_1045961061446877214:qk]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+      </column-instance>
+      <column-instance column='[Calculation_938719099500756992]' derivation='Sum' name='[cum:sum:Calculation_938719099500756992:qk]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+      </column-instance>
+      <column-instance column='[Calculation_1045961061446836253]' derivation='Sum' name='[pcdf:sum:Calculation_1045961061446836253:qk:4]' pivot='key' type='quantitative'>
+        <table-calc diff-options='Relative' ordering-field='[federated.0tdagj40o6quof10vepv00yk6aih].[yr:date:ok]' ordering-type='Field' type='PctDiff'>
+          <address>
+            <value>1</value>
+          </address>
+        </table-calc>
+      </column-instance>
+      <column-instance column='[Calculation_1045961061446877214]' derivation='Sum' name='[pcdf:sum:Calculation_1045961061446877214:qk:5]' pivot='key' type='quantitative'>
+        <table-calc diff-options='Relative' ordering-field='[federated.0tdagj40o6quof10vepv00yk6aih].[yr:date:ok]' ordering-type='Field' type='PctDiff'>
+          <address>
+            <value>1</value>
+          </address>
+        </table-calc>
+      </column-instance>
+      <column-instance column='[Calculation_1045961061446836253]' derivation='Sum' name='[sum:Calculation_1045961061446836253:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_1045961061446877214]' derivation='Sum' name='[sum:Calculation_1045961061446877214:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_938719099500756992]' derivation='Sum' name='[sum:Calculation_938719099500756992:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_938719099500904449]' derivation='Sum' name='[sum:Calculation_938719099500904449:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[date]' derivation='Year' name='[yr:date:ok]' pivot='key' type='ordinal' />
+      <folder name='Brand' role='dimensions' />
+      <folder name='Country' role='dimensions'>
+        <folder-item name='[exchange_rate]' type='field' />
+      </folder>
+      <folder name='Dates' role='dimensions'>
+        <folder-item name='[Calculation_1045961061395996694]' type='field' />
+        <folder-item name='[isoweek]' type='field' />
+        <folder-item name='[isoyear]' type='field' />
+        <folder-item name='[ref_day]' type='field' />
+      </folder>
+      <folder name='Current Year' role='measures'>
+        <folder-item name='[2017 Qty (&apos;000) (copy)]' type='field' />
+        <folder-item name='[2017 Value M€ (copy)]' type='field' />
+        <folder-item name='[Calculation_278097340794748928]' type='field' />
+        <folder-item name='[Calculation_278097340795404289]' type='field' />
+        <folder-item name='[Qty (copy)]' type='field' />
+        <folder-item name='[Value K€ (copy)]' type='field' />
+      </folder>
+      <folder name='Previous Year' role='measures'>
+        <folder-item name='[2016 Qty (&apos;000) (copy)]' type='field' />
+        <folder-item name='[2016 Value M€ (copy)]' type='field' />
+        <folder-item name='[Current Year Qty (copy)]' type='field' />
+        <folder-item name='[Current Year Value K€ (copy)]' type='field' />
+      </folder>
+      <folder name='Regolari' role='measures'>
+        <folder-item name='[qty_reg]' type='field' />
+        <folder-item name='[val_reg_eur]' type='field' />
+        <folder-item name='[val_reg_loc_curr]' type='field' />
+      </folder>
+      <folder name='Saldi' role='measures'>
+        <folder-item name='[qty_saldi]' type='field' />
+        <folder-item name='[val_saldi_eur]' type='field' />
+        <folder-item name='[val_saldi_loc_curr]' type='field' />
+      </folder>
+      <folder name='Totali' role='measures'>
+        <folder-item name='[Calculation_1045961061446836253]' type='field' />
+        <folder-item name='[Calculation_1045961061446877214]' type='field' />
+        <folder-item name='[Calculation_938719099500756992]' type='field' />
+        <folder-item name='[Calculation_938719099500904449]' type='field' />
+        <folder-item name='[qty_tot]' type='field' />
+        <folder-item name='[val_tot_eur]' type='field' />
+      </folder>
+      <layout dim-ordering='alphabetic' dim-percentage='0.218232' group-percentage='0.0372928' measure-ordering='alphabetic' measure-percentage='0.627072' parameter-percentage='0.117403' show-structure='false' user-set-layout='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[sum:Calculation_1045961061446836253:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[sum:Calculation_938719099500904449:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[pcdf:sum:Calculation_1045961061446877214:qk:5]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[pcdf:sum:Calculation_1045961061446836253:qk:4]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[cum:sum:Calculation_1045961061446877214:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[cum:sum:Calculation_938719099500756992:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[sum:Calculation_1045961061446877214:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[sum:Calculation_938719099500756992:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Italy&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Saldi_regolari' datatype='string' name='[Parameter 1 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;Saldi e Regolari&quot;'>
+          <calculation class='tableau' formula='&quot;Saldi e Regolari&quot;' />
+        </column>
+      </datasource-dependencies>
+    </datasource>
     <datasource caption='ecommerce' inline='true' name='federated.1j5g47d1n4b5z61c3y3fs04qql3k' version='10.4'>
       <connection class='federated'>
         <named-connections>
@@ -2723,13 +3318,13 @@
         </aliases>
       </column>
       <column caption='Tot. Value K€' datatype='real' name='[Calculation_1045961061373255682]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='[val_tot_eur]/1000' />
+        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    [val_tot_eur]/1000&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    [val_saldi_eur]/1000&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;     [val_reg_eur]/1000&#13;&#10;END' />
       </column>
       <column caption='Tot. Qty' datatype='integer' name='[Calculation_1045961061373399043]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='[qty_tot]' />
+        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    [qty_tot]&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    [qty_saldi]&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;     [qty_reg]&#13;&#10;END' />
       </column>
       <column caption='Average Price' datatype='real' name='[Calculation_1045961061441585180]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='sum([val_tot_eur])/sum([qty_tot])' />
+        <calculation class='tableau' formula='sum([Calculation_1045961061373255682])/sum([Calculation_1045961061373399043])' />
       </column>
       <column caption='Delta Val %' datatype='real' default-format='p0%' name='[Calculation_278097340794748928]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='zn((sum([Value K€ (copy)])/sum([Current Year Value K€ (copy)]))-1)' />
@@ -3509,6 +4104,11 @@
         <folder-item name='[Qty (copy)]' type='field' />
         <folder-item name='[Value K€ (copy)]' type='field' />
       </folder>
+      <folder name='Full Time Span' role='measures'>
+        <folder-item name='[Calculation_1045961061373255682]' type='field' />
+        <folder-item name='[Calculation_1045961061373399043]' type='field' />
+        <folder-item name='[Calculation_1045961061441585180]' type='field' />
+      </folder>
       <folder name='Previous Year' role='measures'>
         <folder-item name='[Current Year Qty (copy)]' type='field' />
         <folder-item name='[Current Year Value K€ (copy)]' type='field' />
@@ -3524,13 +4124,10 @@
         <folder-item name='[val_saldi_loc_curr]' type='field' />
       </folder>
       <folder name='Totali' role='measures'>
-        <folder-item name='[Calculation_1045961061373255682]' type='field' />
-        <folder-item name='[Calculation_1045961061373399043]' type='field' />
-        <folder-item name='[Calculation_1045961061441585180]' type='field' />
         <folder-item name='[qty_tot]' type='field' />
         <folder-item name='[val_tot_eur]' type='field' />
       </folder>
-      <layout dim-ordering='alphabetic' dim-percentage='0.0939227' group-percentage='0.0441989' measure-ordering='alphabetic' measure-percentage='0.643646' parameter-percentage='0.218232' show-aliased-fields='true' show-structure='false' user-set-layout='true' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.092145' group-percentage='0.0453172' measure-ordering='alphabetic' measure-percentage='0.645015' parameter-percentage='0.217523' show-aliased-fields='true' show-structure='false' user-set-layout='true' />
       <style>
         <style-rule element='mark'>
           <encoding attr='color' field='[:Measure Names]' type='palette'>
@@ -3964,601 +4561,6 @@
         <column-instance column='[Calculation_1045961061446877214]' derivation='Sum' name='[sum:Calculation_1045961061446877214:qk]' pivot='key' type='quantitative' />
       </datasource-dependencies>
     </datasource>
-    <datasource caption='retail' inline='true' name='federated.0tdagj40o6quof10vepv00yk6aih' version='10.4'>
-      <connection class='federated'>
-        <named-connections>
-          <named-connection caption='retail' name='textscan.1twywai0h745zc11xjtts0f1swfz'>
-            <connection class='textscan' directory='K:/dept/DIGITAL E-COMMERCE/E-COMMERCE/Report E-Commerce/Ecommerce_report/data/tableau_repository/retail' filename='retail.csv' password='' server='' />
-          </named-connection>
-        </named-connections>
-        <relation connection='textscan.1twywai0h745zc11xjtts0f1swfz' name='retail.csv' table='[retail#csv]' type='table'>
-          <columns character-set='UTF-8' header='yes' locale='en_US' separator=',' text-qualifier=''>
-            <column datatype='date' name='date' ordinal='0' />
-            <column datatype='date' name='ref_day' ordinal='1' />
-            <column datatype='string' name='country_code' ordinal='2' />
-            <column datatype='string' name='ecommerce_country' ordinal='3' />
-            <column datatype='string' name='country_text' ordinal='4' />
-            <column datatype='string' name='currency' ordinal='5' />
-            <column datatype='string' name='brand_code' ordinal='6' />
-            <column datatype='string' name='brand_text' ordinal='7' />
-            <column datatype='string' name='sales_channel' ordinal='8' />
-            <column datatype='integer' name='isoyear' ordinal='9' />
-            <column datatype='integer' name='isoweek' ordinal='10' />
-            <column datatype='integer' name='qty_saldi' ordinal='11' />
-            <column datatype='real' name='val_saldi_loc_curr' ordinal='12' />
-            <column datatype='integer' name='qty_reg' ordinal='13' />
-            <column datatype='real' name='val_reg_loc_curr' ordinal='14' />
-            <column datatype='real' name='exchange_rate' ordinal='15' />
-            <column datatype='real' name='val_saldi_eur' ordinal='16' />
-            <column datatype='real' name='val_reg_eur' ordinal='17' />
-            <column datatype='integer' name='qty_tot' ordinal='18' />
-            <column datatype='real' name='val_tot_eur' ordinal='19' />
-            <column datatype='boolean' name='ytd' ordinal='20' />
-            <column datatype='boolean' name='mtd' ordinal='21' />
-          </columns>
-        </relation>
-        <metadata-records>
-          <metadata-record class='column'>
-            <remote-name>date</remote-name>
-            <remote-type>133</remote-type>
-            <local-name>[date]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>date</remote-alias>
-            <ordinal>0</ordinal>
-            <local-type>date</local-type>
-            <aggregation>Year</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;date&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>ref_day</remote-name>
-            <remote-type>133</remote-type>
-            <local-name>[ref_day]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>ref_day</remote-alias>
-            <ordinal>1</ordinal>
-            <local-type>date</local-type>
-            <aggregation>Year</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;date&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>country_code</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[country_code]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>country_code</remote-alias>
-            <ordinal>2</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RUS' />
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
-              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
-              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>ecommerce_country</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[ecommerce_country]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>ecommerce_country</remote-alias>
-            <ordinal>3</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RUS' />
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
-              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
-              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>country_text</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[country_text]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>country_text</remote-alias>
-            <ordinal>4</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RUS' />
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
-              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
-              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>currency</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[currency]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>currency</remote-alias>
-            <ordinal>5</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RUS' />
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
-              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
-              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>brand_code</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[brand_code]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>brand_code</remote-alias>
-            <ordinal>6</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RUS' />
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
-              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
-              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>brand_text</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[brand_text]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>brand_text</remote-alias>
-            <ordinal>7</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RUS' />
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
-              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
-              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>sales_channel</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[sales_channel]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>sales_channel</remote-alias>
-            <ordinal>8</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RUS' />
-            <attributes>
-              <attribute datatype='string' name='DebugRemoteCollation'>&quot;en_US&quot;</attribute>
-              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
-              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>isoyear</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[isoyear]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>isoyear</remote-alias>
-            <ordinal>9</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>isoweek</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[isoweek]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>isoweek</remote-alias>
-            <ordinal>10</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>qty_saldi</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[qty_saldi]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>qty_saldi</remote-alias>
-            <ordinal>11</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>val_saldi_loc_curr</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[val_saldi_loc_curr]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>val_saldi_loc_curr</remote-alias>
-            <ordinal>12</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>qty_reg</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[qty_reg]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>qty_reg</remote-alias>
-            <ordinal>13</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>val_reg_loc_curr</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[val_reg_loc_curr]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>val_reg_loc_curr</remote-alias>
-            <ordinal>14</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>exchange_rate</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[exchange_rate]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>exchange_rate</remote-alias>
-            <ordinal>15</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>val_saldi_eur</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[val_saldi_eur]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>val_saldi_eur</remote-alias>
-            <ordinal>16</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>val_reg_eur</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[val_reg_eur]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>val_reg_eur</remote-alias>
-            <ordinal>17</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>qty_tot</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[qty_tot]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>qty_tot</remote-alias>
-            <ordinal>18</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;sint64&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>val_tot_eur</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[val_tot_eur]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>val_tot_eur</remote-alias>
-            <ordinal>19</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>ytd</remote-name>
-            <remote-type>11</remote-type>
-            <local-name>[ytd]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>ytd</remote-alias>
-            <ordinal>20</ordinal>
-            <local-type>boolean</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;bool&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>mtd</remote-name>
-            <remote-type>11</remote-type>
-            <local-name>[mtd]</local-name>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias>mtd</remote-alias>
-            <ordinal>21</ordinal>
-            <local-type>boolean</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
-              <attribute datatype='string' name='DebugRemoteType'>&quot;bool&quot;</attribute>
-            </attributes>
-          </metadata-record>
-          <metadata-record class='capability'>
-            <remote-name />
-            <remote-type>0</remote-type>
-            <parent-name>[retail.csv]</parent-name>
-            <remote-alias />
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <attributes>
-              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
-              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
-              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
-              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
-              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
-              <attribute datatype='string' name='quote-char'>&quot;&quot;</attribute>
-              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
-            </attributes>
-          </metadata-record>
-        </metadata-records>
-      </connection>
-      <aliases enabled='yes' />
-      <column caption='Qty, Y-1' datatype='integer' name='[2016 Qty (&apos;000) (copy)]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;    [qty_tot]&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;    [qty_saldi]&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;    [qty_reg]&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;END' />
-      </column>
-      <column caption='Value K€, Y-1' datatype='real' name='[2016 Value M€ (copy)]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;    [val_tot_eur]/1000&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;    [val_saldi_eur]/1000&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])}-1 THEN&#13;&#10;     [val_reg_eur]/1000&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;END' />
-      </column>
-      <column caption='Qty' datatype='integer' name='[2017 Qty (&apos;000) (copy)]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])} THEN&#13;&#10;    [qty_tot]&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])} THEN&#13;&#10;    [qty_saldi]&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])} THEN&#13;&#10;    [qty_reg]&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;END' />
-      </column>
-      <column caption='Value K€' datatype='real' name='[2017 Value M€ (copy)]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])} THEN&#13;&#10;    [val_tot_eur]/1000&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])} THEN&#13;&#10;    [val_saldi_eur]/1000&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;    IF [isoyear] = {max([isoyear])} THEN&#13;&#10;     [val_reg_eur]/1000&#13;&#10;    ELSE 0&#13;&#10;    END&#13;&#10;&#13;&#10;END' />
-      </column>
-      <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
-        <aliases>
-          <alias key='&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[pcdf:sum:Calculation_1045961061446836253:qk:4]&quot;' value='Delta Q' />
-          <alias key='&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[pcdf:sum:Calculation_1045961061446877214:qk:5]&quot;' value='Delta Val' />
-        </aliases>
-      </column>
-      <column caption='Year' datatype='integer' name='[Calculation_1045961061395996694]' role='dimension' type='ordinal'>
-        <calculation class='tableau' formula='year([date])' />
-      </column>
-      <column caption='Tot. Qty' datatype='integer' name='[Calculation_1045961061446836253]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='[qty_tot]' />
-      </column>
-      <column caption='Tot. Value K€' datatype='real' name='[Calculation_1045961061446877214]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='[val_tot_eur]/1000' />
-      </column>
-      <column caption='Delta Val %' datatype='real' default-format='p0%' name='[Calculation_278097340794748928]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='(sum([Value K€ (copy)])/sum([Current Year Value K€ (copy)]))-1' />
-      </column>
-      <column caption='Delta Q %' datatype='real' default-format='p0%' name='[Calculation_278097340795404289]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='sum([Qty (copy)])/sum([Current Year Qty (copy)])-1' />
-      </column>
-      <column caption='Tot. Value M€' datatype='real' name='[Calculation_938719099500756992]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='[Calculation_1045961061446877214]/1000' />
-      </column>
-      <column caption='Qty &apos;000' datatype='real' name='[Calculation_938719099500904449]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='[Calculation_1045961061446836253]/1000' />
-      </column>
-      <column caption='Qty (&apos;000), Y-1' datatype='real' name='[Current Year Qty (copy)]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='IF [Calculation_1045961061395996694] = {max([Calculation_1045961061395996694])}-1 THEN&#13;&#10;[qty_tot]/1000&#13;&#10;ELSE 0&#13;&#10;END' />
-      </column>
-      <column caption='Value M€, Y-1' datatype='real' name='[Current Year Value K€ (copy)]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='[2016 Value M€ (copy)]/1000' />
-      </column>
-      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
-        <calculation class='tableau' formula='1' />
-      </column>
-      <column caption='Qty (&apos;000)' datatype='real' name='[Qty (copy)]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='[2017 Qty (&apos;000) (copy)]/1000' />
-      </column>
-      <column caption='Value M€' datatype='real' name='[Value K€ (copy)]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='[2017 Value M€ (copy)]/1000' />
-      </column>
-      <column datatype='string' name='[country_code]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
-      <column datatype='string' name='[country_text]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
-      <column datatype='date' name='[date]' role='dimension' type='ordinal' />
-      <column datatype='string' name='[ecommerce_country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
-      <column aggregation='Sum' datatype='real' name='[exchange_rate]' role='dimension' type='ordinal' />
-      <column aggregation='Sum' datatype='integer' name='[isoweek]' role='dimension' type='ordinal' />
-      <column aggregation='Sum' datatype='integer' name='[isoyear]' role='dimension' type='ordinal' />
-      <column-instance column='[Calculation_1045961061446877214]' derivation='Sum' name='[cum:sum:Calculation_1045961061446877214:qk]' pivot='key' type='quantitative'>
-        <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
-      </column-instance>
-      <column-instance column='[Calculation_938719099500756992]' derivation='Sum' name='[cum:sum:Calculation_938719099500756992:qk]' pivot='key' type='quantitative'>
-        <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
-      </column-instance>
-      <column-instance column='[Calculation_1045961061446836253]' derivation='Sum' name='[pcdf:sum:Calculation_1045961061446836253:qk:4]' pivot='key' type='quantitative'>
-        <table-calc diff-options='Relative' ordering-field='[federated.0tdagj40o6quof10vepv00yk6aih].[yr:date:ok]' ordering-type='Field' type='PctDiff'>
-          <address>
-            <value>1</value>
-          </address>
-        </table-calc>
-      </column-instance>
-      <column-instance column='[Calculation_1045961061446877214]' derivation='Sum' name='[pcdf:sum:Calculation_1045961061446877214:qk:5]' pivot='key' type='quantitative'>
-        <table-calc diff-options='Relative' ordering-field='[federated.0tdagj40o6quof10vepv00yk6aih].[yr:date:ok]' ordering-type='Field' type='PctDiff'>
-          <address>
-            <value>1</value>
-          </address>
-        </table-calc>
-      </column-instance>
-      <column-instance column='[Calculation_1045961061446836253]' derivation='Sum' name='[sum:Calculation_1045961061446836253:qk]' pivot='key' type='quantitative' />
-      <column-instance column='[Calculation_1045961061446877214]' derivation='Sum' name='[sum:Calculation_1045961061446877214:qk]' pivot='key' type='quantitative' />
-      <column-instance column='[Calculation_938719099500756992]' derivation='Sum' name='[sum:Calculation_938719099500756992:qk]' pivot='key' type='quantitative' />
-      <column-instance column='[Calculation_938719099500904449]' derivation='Sum' name='[sum:Calculation_938719099500904449:qk]' pivot='key' type='quantitative' />
-      <column-instance column='[date]' derivation='Year' name='[yr:date:ok]' pivot='key' type='ordinal' />
-      <folder name='Brand' role='dimensions' />
-      <folder name='Country' role='dimensions'>
-        <folder-item name='[exchange_rate]' type='field' />
-      </folder>
-      <folder name='Dates' role='dimensions'>
-        <folder-item name='[Calculation_1045961061395996694]' type='field' />
-        <folder-item name='[isoweek]' type='field' />
-        <folder-item name='[isoyear]' type='field' />
-        <folder-item name='[ref_day]' type='field' />
-      </folder>
-      <folder name='Current Year' role='measures'>
-        <folder-item name='[2017 Qty (&apos;000) (copy)]' type='field' />
-        <folder-item name='[2017 Value M€ (copy)]' type='field' />
-        <folder-item name='[Calculation_278097340794748928]' type='field' />
-        <folder-item name='[Calculation_278097340795404289]' type='field' />
-        <folder-item name='[Qty (copy)]' type='field' />
-        <folder-item name='[Value K€ (copy)]' type='field' />
-      </folder>
-      <folder name='Previous Year' role='measures'>
-        <folder-item name='[2016 Qty (&apos;000) (copy)]' type='field' />
-        <folder-item name='[2016 Value M€ (copy)]' type='field' />
-        <folder-item name='[Current Year Qty (copy)]' type='field' />
-        <folder-item name='[Current Year Value K€ (copy)]' type='field' />
-      </folder>
-      <folder name='Regolari' role='measures'>
-        <folder-item name='[qty_reg]' type='field' />
-        <folder-item name='[val_reg_eur]' type='field' />
-        <folder-item name='[val_reg_loc_curr]' type='field' />
-      </folder>
-      <folder name='Saldi' role='measures'>
-        <folder-item name='[qty_saldi]' type='field' />
-        <folder-item name='[val_saldi_eur]' type='field' />
-        <folder-item name='[val_saldi_loc_curr]' type='field' />
-      </folder>
-      <folder name='Totali' role='measures'>
-        <folder-item name='[Calculation_1045961061446836253]' type='field' />
-        <folder-item name='[Calculation_1045961061446877214]' type='field' />
-        <folder-item name='[Calculation_938719099500756992]' type='field' />
-        <folder-item name='[Calculation_938719099500904449]' type='field' />
-        <folder-item name='[qty_tot]' type='field' />
-        <folder-item name='[val_tot_eur]' type='field' />
-      </folder>
-      <layout dim-ordering='alphabetic' dim-percentage='0.218232' group-percentage='0.0372928' measure-ordering='alphabetic' measure-percentage='0.627072' parameter-percentage='0.117403' show-structure='false' user-set-layout='true' />
-      <style>
-        <style-rule element='mark'>
-          <encoding attr='color' field='[:Measure Names]' type='palette'>
-            <map to='#4e79a7'>
-              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[sum:Calculation_1045961061446836253:qk]&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[sum:Calculation_938719099500904449:qk]&quot;</bucket>
-            </map>
-            <map to='#76b7b2'>
-              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[pcdf:sum:Calculation_1045961061446877214:qk:5]&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[pcdf:sum:Calculation_1045961061446836253:qk:4]&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[cum:sum:Calculation_1045961061446877214:qk]&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[cum:sum:Calculation_938719099500756992:qk]&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[sum:Calculation_1045961061446877214:qk]&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;[federated.0tdagj40o6quof10vepv00yk6aih].[sum:Calculation_938719099500756992:qk]&quot;</bucket>
-            </map>
-          </encoding>
-        </style-rule>
-      </style>
-      <semantic-values>
-        <semantic-value key='[Country].[Name]' value='&quot;Italy&quot;' />
-      </semantic-values>
-      <date-options start-of-week='monday' />
-      <datasource-dependencies datasource='Parameters'>
-        <column caption='Saldi_regolari' datatype='string' name='[Parameter 1 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;Saldi e Regolari&quot;'>
-          <calculation class='tableau' formula='&quot;Saldi e Regolari&quot;' />
-        </column>
-      </datasource-dependencies>
-    </datasource>
   </datasources>
   <shared-views>
     <shared-view name='federated.01rqcn314lrazc1b8zyhg0k41g6j'>
@@ -4872,6 +4874,9 @@
             <datasource name='Parameters' />
           </datasources>
           <datasource-dependencies datasource='Parameters'>
+            <column caption='Saldi_regolari' datatype='string' name='[Parameter 1 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;Saldi e Regolari&quot;'>
+              <calculation class='tableau' formula='&quot;Saldi e Regolari&quot;' />
+            </column>
             <column caption='Last N Weeks' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='1'>
               <calculation class='tableau' formula='1' />
               <range max='12' min='1' />
@@ -4882,10 +4887,10 @@
           </datasource-dependencies>
           <datasource-dependencies datasource='federated.1j5g47d1n4b5z61c3y3fs04qql3k'>
             <column caption='Tot. Value K€' datatype='real' name='[Calculation_1045961061373255682]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='[val_tot_eur]/1000' />
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    [val_tot_eur]/1000&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    [val_saldi_eur]/1000&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;     [val_reg_eur]/1000&#13;&#10;END' />
             </column>
             <column caption='Tot. Qty' datatype='integer' name='[Calculation_1045961061373399043]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='[qty_tot]' />
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    [qty_tot]&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    [qty_saldi]&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;     [qty_reg]&#13;&#10;END' />
             </column>
             <column caption='Last N weeks' datatype='boolean' name='[Calculation_700309805989847044]' role='dimension' type='nominal'>
               <calculation class='tableau' formula='[isoweek]&gt;= DATEPART(&apos;week&apos;,[ref_day]-(7*([Parameters].[Parameter 1]-1)))&#13;&#10;and&#13;&#10;[isoweek]&lt;= DATEPART(&apos;week&apos;,[ref_day])' />
@@ -4966,6 +4971,7 @@
             <column-instance column='[Calculation_1045961061373255682]' derivation='Sum' name='[pcto:sum:Calculation_1045961061373255682:qk:2]' pivot='key' type='quantitative'>
               <table-calc ordering-type='Columns' type='PctTotal' />
             </column-instance>
+            <column datatype='integer' name='[qty_reg]' role='measure' type='quantitative' />
             <column caption='Qty Saldi' datatype='integer' name='[qty_saldi]' role='measure' type='quantitative' />
             <column datatype='integer' name='[qty_tot]' role='measure' type='quantitative' />
             <column datatype='date' name='[ref_day]' role='dimension' type='ordinal' />
@@ -4973,6 +4979,8 @@
             <column-instance column='[Calculation_1045961061373255682]' derivation='Sum' name='[sum:Calculation_1045961061373255682:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_1045961061373399043]' derivation='Sum' name='[sum:Calculation_1045961061373399043:qk]' pivot='key' type='quantitative' />
             <column-instance column='[qty_saldi]' derivation='Sum' name='[sum:qty_saldi:qk]' pivot='key' type='quantitative' />
+            <column datatype='real' name='[val_reg_eur]' role='measure' type='quantitative' />
+            <column datatype='real' name='[val_saldi_eur]' role='measure' type='quantitative' />
             <column datatype='real' name='[val_tot_eur]' role='measure' type='quantitative' />
             <column datatype='string' name='[variant_type_text]' role='dimension' type='nominal' />
           </datasource-dependencies>
@@ -5182,6 +5190,9 @@
             <datasource name='Parameters' />
           </datasources>
           <datasource-dependencies datasource='Parameters'>
+            <column caption='Saldi_regolari' datatype='string' name='[Parameter 1 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;Saldi e Regolari&quot;'>
+              <calculation class='tableau' formula='&quot;Saldi e Regolari&quot;' />
+            </column>
             <column caption='Last N Weeks' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='1'>
               <calculation class='tableau' formula='1' />
               <range max='12' min='1' />
@@ -5192,10 +5203,10 @@
           </datasource-dependencies>
           <datasource-dependencies datasource='federated.1j5g47d1n4b5z61c3y3fs04qql3k'>
             <column caption='Tot. Value K€' datatype='real' name='[Calculation_1045961061373255682]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='[val_tot_eur]/1000' />
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    [val_tot_eur]/1000&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    [val_saldi_eur]/1000&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;     [val_reg_eur]/1000&#13;&#10;END' />
             </column>
             <column caption='Tot. Qty' datatype='integer' name='[Calculation_1045961061373399043]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='[qty_tot]' />
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    [qty_tot]&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    [qty_saldi]&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;     [qty_reg]&#13;&#10;END' />
             </column>
             <column caption='Last N weeks' datatype='boolean' name='[Calculation_700309805989847044]' role='dimension' type='nominal'>
               <calculation class='tableau' formula='[isoweek]&gt;= DATEPART(&apos;week&apos;,[ref_day]-(7*([Parameters].[Parameter 1]-1)))&#13;&#10;and&#13;&#10;[isoweek]&lt;= DATEPART(&apos;week&apos;,[ref_day])' />
@@ -5273,6 +5284,7 @@
             <column-instance column='[img_link]' derivation='None' name='[none:img_link:nk]' pivot='key' type='nominal' />
             <column-instance column='[sku_id_std]' derivation='None' name='[none:sku_id_std:nk]' pivot='key' type='nominal' />
             <column datatype='string' name='[parte_text]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[qty_reg]' role='measure' type='quantitative' />
             <column caption='Qty Saldi' datatype='integer' name='[qty_saldi]' role='measure' type='quantitative' />
             <column datatype='integer' name='[qty_tot]' role='measure' type='quantitative' />
             <column datatype='date' name='[ref_day]' role='dimension' type='ordinal' />
@@ -5280,6 +5292,8 @@
             <column-instance column='[Calculation_1045961061373255682]' derivation='Sum' name='[sum:Calculation_1045961061373255682:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_1045961061373399043]' derivation='Sum' name='[sum:Calculation_1045961061373399043:qk]' pivot='key' type='quantitative' />
             <column-instance column='[qty_saldi]' derivation='Sum' name='[sum:qty_saldi:qk]' pivot='key' type='quantitative' />
+            <column datatype='real' name='[val_reg_eur]' role='measure' type='quantitative' />
+            <column datatype='real' name='[val_saldi_eur]' role='measure' type='quantitative' />
             <column datatype='real' name='[val_tot_eur]' role='measure' type='quantitative' />
             <column datatype='string' name='[variant_type_text]' role='dimension' type='nominal' />
           </datasource-dependencies>
@@ -9523,6 +9537,9 @@
             <datasource name='Parameters' />
           </datasources>
           <datasource-dependencies datasource='Parameters'>
+            <column caption='Saldi_regolari' datatype='string' name='[Parameter 1 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;Saldi e Regolari&quot;'>
+              <calculation class='tableau' formula='&quot;Saldi e Regolari&quot;' />
+            </column>
             <column caption='Last N Weeks' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='1'>
               <calculation class='tableau' formula='1' />
               <range max='12' min='1' />
@@ -9533,7 +9550,7 @@
           </datasource-dependencies>
           <datasource-dependencies datasource='federated.1j5g47d1n4b5z61c3y3fs04qql3k'>
             <column caption='Tot. Value K€' datatype='real' name='[Calculation_1045961061373255682]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='[val_tot_eur]/1000' />
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    [val_tot_eur]/1000&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    [val_saldi_eur]/1000&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;     [val_reg_eur]/1000&#13;&#10;END' />
             </column>
             <column caption='INDEX()' datatype='integer' name='[Calculation_170010908648079360]' role='measure' type='quantitative' user:unnamed='Sheet 33'>
               <calculation class='tableau' formula='INDEX()'>
@@ -9586,6 +9603,8 @@
                 <sort direction='DESC' using='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[sum:Calculation_1045961061373255682:qk]' />
               </table-calc>
             </column-instance>
+            <column datatype='real' name='[val_reg_eur]' role='measure' type='quantitative' />
+            <column datatype='real' name='[val_saldi_eur]' role='measure' type='quantitative' />
             <column datatype='real' name='[val_tot_eur]' role='measure' type='quantitative' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[Action (Category)]'>
@@ -10571,6 +10590,9 @@
             <datasource name='Parameters' />
           </datasources>
           <datasource-dependencies datasource='Parameters'>
+            <column caption='Saldi_regolari' datatype='string' name='[Parameter 1 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;Saldi e Regolari&quot;'>
+              <calculation class='tableau' formula='&quot;Saldi e Regolari&quot;' />
+            </column>
             <column caption='Last N Weeks' datatype='integer' name='[Parameter 1]' param-domain-type='range' role='measure' type='quantitative' value='1'>
               <calculation class='tableau' formula='1' />
               <range max='12' min='1' />
@@ -10581,10 +10603,10 @@
           </datasource-dependencies>
           <datasource-dependencies datasource='federated.1j5g47d1n4b5z61c3y3fs04qql3k'>
             <column caption='Tot. Value K€' datatype='real' name='[Calculation_1045961061373255682]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='[val_tot_eur]/1000' />
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    [val_tot_eur]/1000&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    [val_saldi_eur]/1000&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;     [val_reg_eur]/1000&#13;&#10;END' />
             </column>
             <column caption='Tot. Qty' datatype='integer' name='[Calculation_1045961061373399043]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='[qty_tot]' />
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    [qty_tot]&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    [qty_saldi]&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;     [qty_reg]&#13;&#10;END' />
             </column>
             <column caption='Last N weeks' datatype='boolean' name='[Calculation_700309805989847044]' role='dimension' type='nominal'>
               <calculation class='tableau' formula='[isoweek]&gt;= DATEPART(&apos;week&apos;,[ref_day]-(7*([Parameters].[Parameter 1]-1)))&#13;&#10;and&#13;&#10;[isoweek]&lt;= DATEPART(&apos;week&apos;,[ref_day])' />
@@ -10618,10 +10640,14 @@
             <column-instance column='[galleria_flag]' derivation='None' name='[none:galleria_flag:nk]' pivot='key' type='nominal' />
             <column-instance column='[isoweek]' derivation='None' name='[none:isoweek:qk]' pivot='key' type='quantitative' />
             <column-instance column='[isoyear]' derivation='None' name='[none:isoyear:ok]' pivot='key' type='ordinal' />
+            <column datatype='integer' name='[qty_reg]' role='measure' type='quantitative' />
+            <column caption='Qty Saldi' datatype='integer' name='[qty_saldi]' role='measure' type='quantitative' />
             <column datatype='integer' name='[qty_tot]' role='measure' type='quantitative' />
             <column datatype='date' name='[ref_day]' role='dimension' type='ordinal' />
             <column-instance column='[Calculation_1045961061373255682]' derivation='Sum' name='[sum:Calculation_1045961061373255682:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_1045961061373399043]' derivation='Sum' name='[sum:Calculation_1045961061373399043:qk]' pivot='key' type='quantitative' />
+            <column datatype='real' name='[val_reg_eur]' role='measure' type='quantitative' />
+            <column datatype='real' name='[val_saldi_eur]' role='measure' type='quantitative' />
             <column datatype='real' name='[val_tot_eur]' role='measure' type='quantitative' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[Action (Category)]'>
@@ -10926,10 +10952,10 @@
           </datasource-dependencies>
           <datasource-dependencies datasource='federated.1j5g47d1n4b5z61c3y3fs04qql3k'>
             <column caption='Tot. Value K€' datatype='real' name='[Calculation_1045961061373255682]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='[val_tot_eur]/1000' />
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    [val_tot_eur]/1000&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    [val_saldi_eur]/1000&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;     [val_reg_eur]/1000&#13;&#10;END' />
             </column>
             <column caption='Tot. Qty' datatype='integer' name='[Calculation_1045961061373399043]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='[qty_tot]' />
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1 1]&#13;&#10;&#13;&#10;WHEN &quot;Saldi e Regolari&quot; then&#13;&#10;    [qty_tot]&#13;&#10;WHEN &quot;Solo Saldi&quot; then&#13;&#10;    [qty_saldi]&#13;&#10;WHEN &quot;Solo Regolari&quot; then&#13;&#10;     [qty_reg]&#13;&#10;END' />
             </column>
             <column caption='Last N weeks' datatype='boolean' name='[Calculation_700309805989847044]' role='dimension' type='nominal'>
               <calculation class='tableau' formula='[isoweek]&gt;= DATEPART(&apos;week&apos;,[ref_day]-(7*([Parameters].[Parameter 1]-1)))&#13;&#10;and&#13;&#10;[isoweek]&lt;= DATEPART(&apos;week&apos;,[ref_day])' />
@@ -10965,6 +10991,8 @@
             <column-instance column='[galleria_flag]' derivation='None' name='[none:galleria_flag:nk]' pivot='key' type='nominal' />
             <column-instance column='[isoweek]' derivation='None' name='[none:isoweek:qk]' pivot='key' type='quantitative' />
             <column-instance column='[isoyear]' derivation='None' name='[none:isoyear:ok]' pivot='key' type='ordinal' />
+            <column datatype='integer' name='[qty_reg]' role='measure' type='quantitative' />
+            <column caption='Qty Saldi' datatype='integer' name='[qty_saldi]' role='measure' type='quantitative' />
             <column datatype='integer' name='[qty_tot]' role='measure' type='quantitative' />
             <column datatype='date' name='[ref_day]' role='dimension' type='ordinal' />
             <column-instance column='[Calculation_1045961061373255682]' derivation='Sum' name='[sum:Calculation_1045961061373255682:qk]' pivot='key' type='quantitative' />
@@ -14707,7 +14735,7 @@
       </zones>
     </dashboard>
   </dashboards>
-  <windows source-height='58'>
+  <windows source-height='56'>
     <window class='worksheet' name='Parameter Setup'>
       <cards>
         <edge name='left'>
@@ -14781,7 +14809,7 @@
       </viewpoints>
       <active id='-1' />
     </window>
-    <window class='dashboard' maximized='true' name='Year-to-date'>
+    <window class='dashboard' name='Year-to-date'>
       <viewpoints>
         <viewpoint name='Monthly Performance'>
           <zoom type='entire-view' />
@@ -14797,6 +14825,43 @@
         </viewpoint>
       </viewpoints>
       <active id='6' />
+    </window>
+    <window class='worksheet' maximized='true' name='YTD, by category'>
+      <cards>
+        <edge name='left'>
+          <strip size='245'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[brand_text (group)]</field>
+            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[country_text_group (group)]</field>
+            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:classe_new:nk]</field>
+            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:country_code:nk]</field>
+            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:country_text:nk]</field>
+            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:ytd:nk]</field>
+            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[usr:Calculation_278097340794748928:ok]</field>
+          </color-one-way>
+        </highlight>
+        <default-map-tool-selection tool='2' />
+      </viewpoint>
     </window>
     <window class='dashboard' name='Year-to-date, detail'>
       <viewpoints>
@@ -16127,43 +16192,6 @@
             <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[usr:Calculation_278097340794748928:ok]</field>
             <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[usr:Calculation_278097340794748928:qk]</field>
             <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[usr:Calculation_278097340795404289:ok]</field>
-          </color-one-way>
-        </highlight>
-        <default-map-tool-selection tool='2' />
-      </viewpoint>
-    </window>
-    <window class='worksheet' hidden='true' name='YTD, by category'>
-      <cards>
-        <edge name='left'>
-          <strip size='245'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='title' />
-          </strip>
-        </edge>
-      </cards>
-      <viewpoint>
-        <zoom type='entire-view' />
-        <highlight>
-          <color-one-way>
-            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[brand_text (group)]</field>
-            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[country_text_group (group)]</field>
-            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:classe_new:nk]</field>
-            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:country_code:nk]</field>
-            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:country_text:nk]</field>
-            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[none:ytd:nk]</field>
-            <field>[federated.1j5g47d1n4b5z61c3y3fs04qql3k].[usr:Calculation_278097340794748928:ok]</field>
           </color-one-way>
         </highlight>
         <default-map-tool-selection tool='2' />
@@ -19817,222 +19845,423 @@
       jQBgjQBgjQBgjQBgjQBgjQBgjQBgjQBgjQBgjQBgjQBgjQBgjQBgjQBgjQBgjQBgjQBgjQBg
       7e/xlcz5fHFL2QAAAABJRU5ErkJggg==
     </thumbnail>
+    <thumbnail height='192' name='YTD, by category' width='192'>
+      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
+    </thumbnail>
     <thumbnail height='192' name='Year-to-date' width='192'>
       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
-      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
-      /3dwbqmzYwkBhAAAAABJRU5ErkJggg==
+      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
+      o7+BWrY2KQAAAABJRU5ErkJggg==
     </thumbnail>
     <thumbnail height='192' name='Year-to-date, detail' width='192'>
       iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
