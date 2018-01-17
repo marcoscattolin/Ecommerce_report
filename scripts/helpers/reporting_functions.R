@@ -1046,7 +1046,7 @@ price_anomalies <- function(ref_day){
                 ungroup() %>% 
                 filter(isoyear == isoyear(ref_day) & isoweek == isoweek(ref_day) & !is.na(delta_price) & delta_price != 0)
         
-        write_csv(kde_based, path = get_path("regular_price_anomalies_output"), na = "")
+        write_csv(regular_price_anomalies, path = get_path("regular_price_anomalies_output"), na = "")
         
         if(nrow(regular_price_anomalies) > 0){
                 m <- sprintf("WARNING!! found %s price anomalies, check file at %s",nrow(regular_price_anomalies), get_path("regular_price_anomalies_output"))
