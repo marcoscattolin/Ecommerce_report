@@ -672,11 +672,32 @@ ga_get_views <- function(brand, ref_day, lookback_weeks = 12, split_daywise = F)
         visits <- ga_get_data(start_date = start_date, 
                               end_date = ref_day, 
                               brand = brand,
-                              dimensions = "ga:year,ga:isoWeek,ga:date,ga:country,ga:channelGrouping", 
-                              metrics = "ga:sessions,ga:transactions,ga:bounces,ga:newUsers,ga:pageviewsPerSession", 
-                              segments = segment_id, 
+                              dimensions = "ga:year,ga:isoWeek,ga:date,ga:country,ga:source,ga:medium,ga:campaign", 
+                              metrics = "ga:sessions,ga:transactions,ga:bounces,ga:newUsers,ga:pageviews", 
+                              segments = segment_id,
+                              filters = "ga:landingPagePath!@SocialSignIn",
                               split_daywise = split_daywise) %>% 
-                mutate(brand = brand)
+                mutate(brand = brand, landingPagePath = "not social")
+        
+        #  get traffic from social logins (after 5-5-2017 for Prada, after 29-12-2017 for miu miu)
+        temp_start_date <- max(start_date,ymd("20170505"))
+        temp_end_date <- max(temp_start_date,ref_day)
+        if(brand != "Prada"){
+                temp_start_date <- max(start_date,ymd("20171229"))
+                temp_end_date <- max(temp_start_date,ref_day)
+        }
+        
+        visits <- ga_get_data(start_date = temp_start_date, 
+                    end_date = temp_end_date, 
+                    brand = brand,
+                    dimensions = "ga:year,ga:isoWeek,ga:date,ga:country,ga:source,ga:medium,ga:campaign",
+                    metrics = "ga:sessions,ga:transactions,ga:bounces,ga:newUsers,ga:pageviews", 
+                    segments = segment_id,
+                    filters = "ga:landingPagePath=@SocialSignIn",
+                    split_daywise = F) %>% 
+                mutate(brand = brand,
+                       landingPagePath = "social") %>% 
+                bind_rows(visits)
         
         
         
@@ -689,18 +710,61 @@ ga_get_views <- function(brand, ref_day, lookback_weeks = 12, split_daywise = F)
         visits <- ga_get_data(start_date = start_date, 
                               end_date = temp, 
                               brand = brand,
-                              dimensions = "ga:year,ga:isoWeek,ga:date,ga:country,ga:channelGrouping", 
-                              metrics = "ga:sessions,ga:transactions,ga:bounces,ga:newUsers,ga:pageviewsPerSession", 
-                              segments = segment_id, 
+                              dimensions = "ga:year,ga:isoWeek,ga:date,ga:country,ga:source,ga:medium,ga:campaign", 
+                              metrics = "ga:sessions,ga:transactions,ga:bounces,ga:newUsers,ga:pageviews", 
+                              segments = segment_id,
+                              filters = "ga:landingPagePath!@SocialSignIn",
                               split_daywise = split_daywise) %>% 
-                mutate(brand = brand) %>% bind_rows(visits)
+                mutate(brand = brand, landingPagePath = "not social") %>% 
+                bind_rows(visits)
+        
+        #  get traffic from social logins (after 5-5-2017 for Prada, after 29-12-2017 for miu miu)
+        temp_start_date <- max(start_date,ymd("20170505"))
+        temp_end_date <- max(temp_start_date,temp)
+        if(brand != "Prada"){
+                temp_start_date <- max(start_date,ymd("20171229"))
+                temp_end_date <- max(temp_start_date,temp)
+        }
+        
+        if(temp_start_date < temp_end_date){
+                visits <- ga_get_data(start_date = temp_start_date, 
+                                      end_date = temp_end_date, 
+                                      brand = brand,
+                                      dimensions = "ga:year,ga:isoWeek,ga:date,ga:country,ga:source,ga:medium,ga:campaign",
+                                      metrics = "ga:sessions,ga:transactions,ga:bounces,ga:newUsers,ga:pageviews", 
+                                      segments = segment_id,
+                                      filters = "ga:landingPagePath=@SocialSignIn",
+                                      split_daywise = F) %>% 
+                        mutate(brand = brand,
+                               landingPagePath = "social") %>% 
+                        bind_rows(visits)
+        }
         
         
         
-        #fix different naming convention
+        
         visits <- visits %>% 
-                mutate(channelGrouping = case_when(channelGrouping == "Organic Search" ~ "Natural Search",
-                                                   TRUE ~ channelGrouping))
+                mutate(custom_grouping = case_when(source == "(direct)" & medium == "(none)" ~ "Direct",
+                                                  medium == "organic" ~ "Natural Search",
+                                                  medium == "referral" & landingPagePath != "social" & campaign == "(not set)" & grepl(pattern = "(.*baidu.*)|(.*facebook.*)|(.*instagram.*)|(.*t\\.co$)|(.*pinterest.*)|(.*vk\\.com.*)|(.*twitter.*)|(.*youtube.*)|(^line$)", source) ~ "Referrals from socials",
+                                                  medium == "referral" & landingPagePath != "social" & campaign == "(not set)" ~ "Referrals non-social",
+                                                  grepl("social[-_]post",medium) & landingPagePath != "social" & campaign != "(not set)" ~ "Social Posts",
+                                                  medium == "sa" | medium == "social_ad" ~ "Social Paid Campaigns",
+                                                  grepl("email|mail",medium)  ~ "Email",
+                                                  grepl("cpc|mse",medium) ~ "Paid Search",
+                                                  grepl("display|affiliate|video|video_ad|branded_content|native",medium)  ~ "Display",
+                                                  grepl(" ^(cpv|cpa|cpp|content-text)$",medium) | campaign != "(not set)" ~ "Other Campaigns",
+                                                  landingPagePath == "social" & campaign == "(not set)" ~ "Social Login",
+                                                  TRUE ~ "(Other)")) %>% 
+                group_by(year,isoWeek,date,country,brand,custom_grouping) %>% 
+                summarise_at(vars(sessions,transactions,bounces,newUsers,pageviews),sum)
+        
+        # format country USA for compatibility with oter reports
+        visits <- visits %>% 
+                ungroup() %>% 
+                mutate(ref_day = ref_day) %>% 
+                #mutate(country = case_when(country == "United States" ~ "USA",TRUE ~ country)) %>% 
+                rename(channelGrouping = custom_grouping)
         
         
         

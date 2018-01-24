@@ -18,7 +18,7 @@ source("scripts/helpers/sku_utils.R")
 # INPUT -------------------------------------------------------------------
 cat("Insert reference date (format yyyy-mm-dd): ")
 ref_day <- ymd(readLines(file("stdin"),1))
-#ref_day <- ymd("20180114")
+#ref_day <- ymd("20180121")
 
 # MAKE OVERVIEW -----------------------------------------------------------
 message("------ PROCESSING OVERVIEW DATA -------\n")
