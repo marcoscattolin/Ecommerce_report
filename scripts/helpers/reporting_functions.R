@@ -695,7 +695,7 @@ ga_get_grouped_traffic <- function(brand, start_date, end_date, segment_id, spli
         visits <- visits %>% 
                 mutate(custom_grouping = case_when(source == "(direct)" & medium == "(none)" ~ "Direct",
                                                    medium == "organic" ~ "Natural Search",
-                                                   medium == "referral" & landingPagePath != "social" & campaign == "(not set)" & grepl(pattern = "(.*baidu.*)|(.*facebook.*)|(.*instagram.*)|(.*t\\.co$)|(.*pinterest.*)|(.*vk\\.com.*)|(.*twitter.*)|(.*youtube.*)|(^line$)", source) ~ "Referrals from socials",
+                                                   medium == "referral" & landingPagePath != "social" & campaign == "(not set)" & grepl(pattern = "(.*facebook.*)|(.*instagram.*)|(.*t\\.co$)|(.*pinterest.*)|(.*vk\\.com.*)|(.*twitter.*)|(.*youtube.*)|(^line$)", source) ~ "Referrals from socials",
                                                    medium == "referral" & landingPagePath != "social" & campaign == "(not set)" ~ "Referrals non-social",
                                                    grepl("social[-_]post",medium) & landingPagePath != "social" & campaign != "(not set)" ~ "Social Posts",
                                                    medium == "sa" | medium == "social_ad" ~ "Social Paid Campaigns",
