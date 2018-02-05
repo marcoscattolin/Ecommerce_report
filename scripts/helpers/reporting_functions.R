@@ -1040,7 +1040,7 @@ low_hi_sales_anomalies <- function(ref_day){
                 summarise_at(vars(qty_tot,val_tot_eur),get_cdf_kde) %>% 
                 mutate(value_anomaly = case_when(val_tot_eur < .15 ~ "LW value lower than expected", val_tot_eur > .85 ~ "LW value higher than expected", TRUE ~ "regular")) %>% 
                 mutate(qty_anomaly = case_when(qty_tot < .15 ~ "LW qty lower than expected", qty_tot > .85 ~ "LW qty higher than expected", TRUE ~ "regular")) %>% 
-                filter(value_anomaly != "regular" | qty_anomaly != "regular") %>% 
+                filter(value_anomaly ==  "LW value lower than expected" | qty_anomaly == "LW qty lower than expected") %>% 
                 mutate(ref_day = ref_day) %>% 
                 ungroup() %>% 
                 arrange(brand_text,desc(value_anomaly),desc(qty_anomaly))
@@ -1094,7 +1094,8 @@ price_anomalies <- function(ref_day){
                 mutate(avg_price = val_reg_eur/qty_reg, ix = row_number()) %>% 
                 mutate(delta_price = avg_price/lag(avg_price)-1) %>% 
                 ungroup() %>% 
-                filter(isoyear == isoyear(ref_day) & isoweek == isoweek(ref_day) & !is.na(delta_price) & delta_price != 0)
+                filter(isoyear == isoyear(ref_day) & isoweek == isoweek(ref_day) & !is.na(delta_price) & delta_price != 0) %>% 
+                mutate(ref_day = ref_day)
         
         write_csv(regular_price_anomalies, path = get_path("regular_price_anomalies_output"), na = "")
         
