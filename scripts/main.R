@@ -13,7 +13,7 @@ message("\n\n\n\n\n\n\n-------- STARTING SCRIPT --------")
 
 source("scripts/helpers/reporting_functions.R")
 source("scripts/helpers/sku_utils.R")
-
+source("scripts/helpers/ga_visits_v2.R")
 
 # INPUT -------------------------------------------------------------------
 cat("Insert reference date (format yyyy-mm-dd): ")
@@ -51,6 +51,15 @@ visits <- visits %>% mutate(ref_day = ref_day) %>% mutate(transactions = case_wh
 ga_views_save_dataset()
 message("------ PROCESSING GOOGLE ANALYTICS VISITS DATA: DONE -------\n\n\n")
 
+# GET GOOGLE VISITS DATA V2 ---------------------------------------------------------
+message("------ PROCESSING GOOGLE ANALYTICS VISITS DATA V2 -------\n")
+visits_v2 <- ga_get_views_v2(brand = "P",ref_day = ref_day, split_daywise = T)
+visits_v2 <- ga_get_views_v2(brand = "M",ref_day = ref_day, split_daywise = T) %>% bind_rows(visits_v2)
+visits_v2 <- ga_get_views_v2(brand = "MA",ref_day = ref_day, split_daywise = T) %>% bind_rows(visits_v2)
+visits_v2 <- ga_get_views_v2(brand = "KS",ref_day = ref_day, split_daywise = T, use_carshoe_raw = T) %>% bind_rows(visits_v2)
+visits_v2 <- visits_v2 %>% mutate(ref_day = ref_day) %>% mutate(transactions = case_when(country == "China" ~ 0, TRUE ~ transactions))
+ga_views_save_dataset_v2()
+message("------ PROCESSING GOOGLE ANALYTICS VISITS DATA V2: DONE -------\n\n\n")
 
 # GET GOOGLE MOST VIEWED DATA ---------------------------------------------------------
 message("------ PROCESSING GOOGLE ANALYTICS MOST VIEWED DATA -------\n")

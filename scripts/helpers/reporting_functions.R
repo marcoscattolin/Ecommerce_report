@@ -671,7 +671,7 @@ ga_get_grouped_traffic <- function(brand, start_date, end_date, segment_id, spli
                 mutate(brand = brand, landingPagePath = "not social")
         
         #  get traffic from social logins (after 5-5-2017 for Prada, after 29-12-2017 for miu miu)
-        if(brand != "Prada"){
+        if(brand == "Prada"){
                 temp_start_date <- max(start_date,ymd("20170505"))
         } else {
                 temp_start_date <- max(start_date,ymd("20171229"))
