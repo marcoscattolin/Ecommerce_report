@@ -791,7 +791,8 @@ ga_get_most_viewed <- function(ref_day, brand, paginate_query = F, use_miumiu_mi
                     filters = "ga:eventCategory==ecommerce;ga:eventAction==detail",
                     split_daywise = F,
                     paginate_query = paginate_query,
-                    use_miumiu_mirror = use_miumiu_mirror)
+                    use_miumiu_mirror = use_miumiu_mirror) %>% 
+                filter(pagePathLevel3 != "/miumiuca/")
         
         
         
