@@ -57,6 +57,8 @@ load_retail <- function(ref_day){
                        "country_code",
                        "country_text",
                        "currency",
+                       "category_code",
+                       "category_text",
                        "brand_code",
                        "brand_text",
                        "val_saldi_loc_curr",
