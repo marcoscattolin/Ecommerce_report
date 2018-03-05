@@ -61,6 +61,8 @@ load_retail <- function(ref_day){
                        "category_text",
                        "brand_code",
                        "brand_text",
+                       "collection_code",
+                       "collection_text",
                        "val_saldi_loc_curr",
                        "val_reg_loc_curr",
                        "qty_saldi",
