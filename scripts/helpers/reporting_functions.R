@@ -61,6 +61,8 @@ load_retail <- function(ref_day){
                        "category_text",
                        "brand_code",
                        "brand_text",
+                       "collection_code",
+                       "collection_text",
                        "val_saldi_loc_curr",
                        "val_reg_loc_curr",
                        "qty_saldi",
@@ -833,9 +835,9 @@ most_viewed_reshape <- function(){
                 mutate(sku = gsub("(\\?|#).*","",eventLabel)) %>% 
                 group_by(pagePathLevel3,sku) %>% 
                 summarise(totalEvents = sum(totalEvents)) %>% 
-                filter(grepl("^[A-Z0-9]",sku)) %>% 
+                filter(grepl("^[A-Z0-9]+(-|_)",sku)) %>% 
                 ungroup()
-        
+
         most_viewed <- most_viewed %>% 
                 mutate(pagePathLevel3 = gsub("^/|/$","",pagePathLevel3)) %>% 
                 mutate(country_code = toupper(str_sub(pagePathLevel3,-2))) %>% 
