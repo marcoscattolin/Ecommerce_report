@@ -835,7 +835,7 @@ most_viewed_reshape <- function(){
                 mutate(sku = gsub("(\\?|#).*","",eventLabel)) %>% 
                 group_by(pagePathLevel3,sku) %>% 
                 summarise(totalEvents = sum(totalEvents)) %>% 
-                filter(grepl("^[A-Z0-9]+-|_",sku)) %>% 
+                filter(grepl("^[A-Z0-9]+(-|_)",sku)) %>% 
                 ungroup()
 
         most_viewed <- most_viewed %>% 
