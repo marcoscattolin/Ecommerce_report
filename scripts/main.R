@@ -18,7 +18,7 @@ source("scripts/helpers/ga_visits_v2.R")
 # INPUT -------------------------------------------------------------------
 cat("Insert reference date (format yyyy-mm-dd): ")
 ref_day <- ymd(readLines(file("stdin"),1))
-#ref_day <- ymd("20180211")
+#ref_day <- ymd("20180325")
 
 # MAKE OVERVIEW -----------------------------------------------------------
 message("------ PROCESSING OVERVIEW DATA -------\n")
