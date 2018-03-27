@@ -728,7 +728,7 @@ ga_get_views <- function(brand, ref_day, lookback_weeks = 12, split_daywise = F)
         #subset to e-store countries
         segment_id <- "gaid::7xcJH6ZkRN2HQOGhoyz98A"
         
-        if(brand == "Prada"){
+        if(brand %in% c("Prada","Miu Miu")){
                 # modified for go live china
                 segment_id <- "gaid::J09RpBPURA2XrNwnp9ih4A"
         }
