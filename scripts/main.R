@@ -18,7 +18,7 @@ source("scripts/helpers/ga_visits_v2.R")
 # INPUT -------------------------------------------------------------------
 cat("Insert reference date (format yyyy-mm-dd): ")
 ref_day <- ymd(readLines(file("stdin"),1))
-#ref_day <- ymd("20180325")
+#ref_day <- ymd("20180418")
 
 # MAKE OVERVIEW -----------------------------------------------------------
 message("------ PROCESSING OVERVIEW DATA -------\n")
@@ -47,6 +47,7 @@ message("------ PROCESSING BESTSELLERS DATA: DONE -------\n\n\n")
 message("------ PROCESSING GOOGLE ANALYTICS VISITS DATA -------\n")
 visits <- ga_get_views(brand = "Prada",ref_day = ref_day, lookback_weeks = 4, split_daywise = T)
 visits <- ga_get_views(brand = "Miu Miu",ref_day = ref_day, lookback_weeks = 4, split_daywise = T) %>% bind_rows(visits)
+visits <- ga_get_views(brand = "Car Shoe",ref_day = ref_day, lookback_weeks = 4, split_daywise = T) %>% bind_rows(visits)
 visits <- visits %>% mutate(ref_day = ref_day) %>% mutate(transactions = case_when(country == "China" ~ 0, TRUE ~ transactions))
 ga_views_save_dataset()
 message("------ PROCESSING GOOGLE ANALYTICS VISITS DATA: DONE -------\n\n\n")

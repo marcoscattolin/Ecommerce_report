@@ -606,9 +606,12 @@ ga_get_data <- function(start_date, end_date, brand, dimensions, metrics, segmen
         } else if(brand == "Miu Miu" & use_miumiu_mirror){
                 view <- profiles %>% 
                         filter(id == "158198438")
-        } else {
+        } else if(brand == "Miu Miu" & use_miumiu_mirror == F){
                 view <- profiles %>% 
                         filter(id == "126514406")
+        } else {
+                view <- profiles %>% 
+                        filter(id == "169292958")
         }
         
         message(paste0("Getting data for view: ",view$name))
@@ -664,37 +667,51 @@ ga_get_data <- function(start_date, end_date, brand, dimensions, metrics, segmen
 ga_get_grouped_traffic <- function(brand, start_date, end_date, segment_id, split_daywise){
         
         #  get traffic from social but logins
-        visits <- ga_get_data(start_date = start_date, 
-                              end_date = end_date, 
-                              brand = brand,
-                              dimensions = "ga:year,ga:isoWeek,ga:date,ga:country,ga:source,ga:medium,ga:campaign", 
-                              metrics = "ga:sessions,ga:transactions,ga:bounces,ga:newUsers,ga:pageviews", 
-                              segments = segment_id,
-                              filters = "ga:landingPagePath!@SocialSignIn",
-                              split_daywise = split_daywise) %>% 
-                mutate(brand = brand, landingPagePath = "not social")
-        
-        #  get traffic from social logins (after 5-5-2017 for Prada, after 29-12-2017 for miu miu)
-        if(brand == "Prada"){
-                temp_start_date <- max(start_date,ymd("20170505"))
-        } else {
-                temp_start_date <- max(start_date,ymd("20171229"))
-        }
-        
-        if(temp_start_date < end_date){
-                visits <- ga_get_data(start_date = temp_start_date, 
+        if(brand == "Car Shoe"){
+                visits <- ga_get_data(start_date = start_date, 
                                       end_date = end_date, 
                                       brand = brand,
-                                      dimensions = "ga:year,ga:isoWeek,ga:date,ga:country,ga:source,ga:medium,ga:campaign",
+                                      dimensions = "ga:year,ga:isoWeek,ga:date,ga:country,ga:source,ga:medium,ga:campaign", 
+                                      metrics = "ga:sessions,ga:bounces,ga:newUsers,ga:pageviews,ga:goalCompletionsAll", 
+                                      segments = segment_id,
+                                      filters = "ga:landingPagePath!@SocialSignIn",
+                                      split_daywise = split_daywise) %>% 
+                        mutate(brand = brand, 
+                               landingPagePath = "not social") %>% 
+                        rename(transactions = goalCompletionsAll)
+        } else {
+                visits <- ga_get_data(start_date = start_date, 
+                                      end_date = end_date, 
+                                      brand = brand,
+                                      dimensions = "ga:year,ga:isoWeek,ga:date,ga:country,ga:source,ga:medium,ga:campaign", 
                                       metrics = "ga:sessions,ga:transactions,ga:bounces,ga:newUsers,ga:pageviews", 
                                       segments = segment_id,
-                                      filters = "ga:landingPagePath=@SocialSignIn",
-                                      split_daywise = F) %>% 
-                        mutate(brand = brand,
-                               landingPagePath = "social") %>% 
-                        bind_rows(visits)
+                                      filters = "ga:landingPagePath!@SocialSignIn",
+                                      split_daywise = split_daywise) %>% 
+                        mutate(brand = brand, landingPagePath = "not social")
         }
-        
+        #  get traffic from social logins (after 5-5-2017 for Prada, after 29-12-2017 for miu miu)
+        if(brand != "Car Shoe"){
+                if(brand == "Prada"){
+                        temp_start_date <- max(start_date,ymd("20170505"))
+                } else {
+                        temp_start_date <- max(start_date,ymd("20171229"))
+                }
+                
+                if(temp_start_date < end_date){
+                        visits <- ga_get_data(start_date = temp_start_date, 
+                                              end_date = end_date, 
+                                              brand = brand,
+                                              dimensions = "ga:year,ga:isoWeek,ga:date,ga:country,ga:source,ga:medium,ga:campaign",
+                                              metrics = "ga:sessions,ga:transactions,ga:bounces,ga:newUsers,ga:pageviews", 
+                                              segments = segment_id,
+                                              filters = "ga:landingPagePath=@SocialSignIn",
+                                              split_daywise = F) %>% 
+                                mutate(brand = brand,
+                                       landingPagePath = "social") %>% 
+                                bind_rows(visits)
+                }
+        }
         # new channel grouping
         visits <- visits %>% 
                 mutate(custom_grouping = case_when(source == "(direct)" & medium == "(none)" ~ "Direct",
@@ -731,33 +748,44 @@ ga_get_views <- function(brand, ref_day, lookback_weeks = 12, split_daywise = F)
         if(brand %in% c("Prada","Miu Miu")){
                 # modified for go live china
                 segment_id <- "gaid::J09RpBPURA2XrNwnp9ih4A"
+        } else {
+                segment_id <- "gaid::wpN-5UBESBuzUedlpmhLSg"
         }
         
         
         
         start_date <- ref_day-(7*lookback_weeks)+1
+        if(brand != "Car Shoe"){
+                visits <- ga_get_grouped_traffic(start_date = start_date, 
+                                      end_date = ref_day, 
+                                      brand = brand,
+                                      segment_id = segment_id, 
+                                      split_daywise = split_daywise)
         
-        visits <- ga_get_grouped_traffic(start_date = start_date, 
-                              end_date = ref_day, 
-                              brand = brand,
-                              segment_id = segment_id, 
-                              split_daywise = split_daywise)
+        
+                w <- isoweek(ref_day)
+                w <- ifelse(w < 10,paste0("0",w),w)
+                temp <-  ISOweek2date(paste0(year(ref_day)-1,"-W",w,"-7"))
+                start_date <- temp-(7*lookback_weeks)+1
         
         
-        w <- isoweek(ref_day)
-        w <- ifelse(w < 10,paste0("0",w),w)
-        temp <-  ISOweek2date(paste0(year(ref_day)-1,"-W",w,"-7"))
-        start_date <- temp-(7*lookback_weeks)+1
-        
-        visits <- ga_get_grouped_traffic(start_date = start_date, 
-                              end_date = temp, 
-                              brand = brand,
-                              segment_id = segment_id, 
-                              split_daywise = split_daywise) %>% 
-                bind_rows(visits) %>% 
-                mutate(country = case_when(country == "United States" ~ "USA",TRUE ~ country)) %>% 
-                mutate(ref_day = ref_day)
-        
+                visits <- ga_get_grouped_traffic(start_date = start_date, 
+                                      end_date = temp, 
+                                      brand = brand,
+                                      segment_id = segment_id, 
+                                      split_daywise = split_daywise) %>% 
+                        bind_rows(visits) %>% 
+                        mutate(country = case_when(country == "United States" ~ "USA",TRUE ~ country)) %>% 
+                        mutate(ref_day = ref_day)
+        } else {
+                visits <- ga_get_grouped_traffic(start_date = start_date, 
+                                                 end_date = ref_day, 
+                                                 brand = brand,
+                                                 segment_id = segment_id, 
+                                                 split_daywise = split_daywise) %>% 
+                                                 mutate(country = case_when(country == "United States" ~ "USA",TRUE ~ country)) %>% 
+                                                 mutate(ref_day = ref_day)
+        }
         
 }
 
@@ -865,7 +893,7 @@ most_viewed_enrich <- function(){
         most_viewed <- most_viewed %>% 
                 mutate(img_link = case_when(brand == "Prada" ~ paste0(prada_link[1],gsub("-","\\_",sku),prada_link[2]),
                                             brand == "Miu Miu" ~ paste0(miu_link[1],gsub("-","\\_",sku),miu_link[2]),
-                                            TRUE ~ "Not Found")) %>% 
+                                            brand == "Car Shoe" ~ paste0("http://www.carshoe.com/products/",gsub("-","\\_",sku),"/",gsub("-","\\_",sku),"_2.png"))) %>% 
                 mutate(ref_day = ref_day)
         
         most_viewed <<- ecommerce %>%
