@@ -749,7 +749,7 @@ ga_get_views <- function(brand, ref_day, lookback_weeks = 12, split_daywise = F)
                 # modified for go live china
                 segment_id <- "gaid::J09RpBPURA2XrNwnp9ih4A"
         } else {
-                segment_id <- "gaid::wpN-5UBESBuzUedlpmhLSg"
+                segment_id <- "gaid::J09RpBPURA2XrNwnp9ih4A"
         }
         
         
