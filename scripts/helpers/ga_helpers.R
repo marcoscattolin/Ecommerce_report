@@ -155,7 +155,7 @@ ga_get_views <- function(brand, start_date, end_date, split_daywise = F){
                                                   medium == "sa" | medium == "social_ad" ~ "Social Paid Campaigns",
                                                   grepl("email|mail",medium)  ~ "Email",
                                                   grepl("cpc|mse",medium) ~ "Paid Search",
-                                                  grepl("display|affiliate|video|video_ad|branded_content|native",medium)  ~ "Display",
+                                                  grepl("display|affiliate|video|video_ad|branded_content|native|programmatic",medium)  ~ "Display",
                                                   grepl(" ^(cpv|cpa|cpp|content-text)$",medium) | campaign != "(not set)" ~ "Other Campaigns",
                                                   landingPagePath == "social" & campaign == "(not set)" ~ "Social Login",
                                                   TRUE ~ "(Other)")) %>% 
