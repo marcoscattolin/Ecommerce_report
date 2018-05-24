@@ -18,7 +18,7 @@ source("scripts/helpers/ga_visits_v2.R")
 # INPUT -------------------------------------------------------------------
 cat("Insert reference date (format yyyy-mm-dd): ")
 ref_day <- ymd(readLines(file("stdin"),1))
-#ref_day <- ymd("20180418")
+ref_day <- ymd("20180520")
 
 # MAKE OVERVIEW -----------------------------------------------------------
 message("------ PROCESSING OVERVIEW DATA -------\n")
@@ -67,7 +67,9 @@ message("------ PROCESSING GOOGLE ANALYTICS MOST VIEWED DATA -------\n")
 most_viewed <- ga_get_most_viewed(ref_day, "Prada", paginate_query = T)
 most_viewed <- ga_get_most_viewed(ref_day, "Miu Miu", paginate_query = T, use_miumiu_mirror = F) %>% bind_rows(most_viewed)
 most_viewed_reshape()
-most_viewed <- ga_get_most_viewed_china(ref_day, "Prada", paginate_query = F, use_miumiu_mirror = F) %>% bind_rows(most_viewed)
+most_viewed <- ga_get_most_viewed_newsite(ref_day, "Prada", paginate_query = F, use_miumiu_mirror = F) %>% bind_rows(most_viewed) %>% 
+        group_by(brand,country_code,sku) %>% summarise(views = sum(views))
+
 most_viewed_enrich()
 most_viewed_add_marketplaces()
 most_viewed_get_images(top_n = 12)

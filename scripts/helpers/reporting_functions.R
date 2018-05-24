@@ -674,7 +674,6 @@ ga_get_grouped_traffic <- function(brand, start_date, end_date, segment_id, spli
                                       dimensions = "ga:year,ga:isoWeek,ga:date,ga:country,ga:source,ga:medium,ga:campaign", 
                                       metrics = "ga:sessions,ga:bounces,ga:newUsers,ga:pageviews,ga:goalCompletionsAll", 
                                       segments = segment_id,
-                                      filters = "ga:landingPagePath!@SocialSignIn",
                                       split_daywise = split_daywise) %>% 
                         mutate(brand = brand, 
                                landingPagePath = "not social") %>% 
@@ -831,27 +830,26 @@ ga_get_most_viewed <- function(ref_day, brand, paginate_query = F, use_miumiu_mi
         
 }
 
-ga_get_most_viewed_china <- function(ref_day, brand, paginate_query = F, use_miumiu_mirror = F, lookback_days = 6){
+ga_get_most_viewed_newsite <- function(ref_day, brand, paginate_query = F, use_miumiu_mirror = F, lookback_days = 6){
         
         
         
-        most_viewed_china <- ga_get_data(start_date = ref_day-lookback_days,
+        most_viewed_newsite <- ga_get_data(start_date = ref_day-lookback_days,
                                          end_date = ref_day,
                                          brand = brand,
-                                         dimensions = "ga:pagePathLevel4",
+                                         dimensions = "ga:pagePath,ga:pagePathLevel4",
                                          metrics = "ga:pageviews",
-                                         filters = "ga:pagePath=~^www\\.prada\\.com/cn/*;ga:pagePathLevel4=~product",
+                                         filters = "ga:pagePath=~^www\\.prada\\.com/(us|ca|cn)/*;ga:pagePathLevel4=~product",
                                          split_daywise = F,
                                          paginate_query = paginate_query,
                                          use_miumiu_mirror = use_miumiu_mirror)
         
-        most_viewed_china <- most_viewed_china %>% 
+        most_viewed_newsite <- most_viewed_newsite %>% 
                 mutate(sku = str_extract(pagePathLevel4,"[A-Z0-9_]*\\.html$") %>% gsub("\\.html$","",.)) %>% 
-                group_by(sku) %>% 
+                mutate(country_code = toupper(str_sub(pagePath,15,16)), brand = brand) %>% 
+                group_by(country_code,brand,sku) %>% 
                 summarise(views = sum(pageviews)) %>% 
-                mutate(country_code = "CN", brand = brand) %>% 
-                filter(sku != "")
-        
+                filter(sku != "") 
         
         
 }
