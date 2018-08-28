@@ -839,7 +839,7 @@ ga_get_most_viewed_newsite <- function(ref_day, brand, paginate_query = F, use_m
                                          brand = brand,
                                          dimensions = "ga:pagePath,ga:pagePathLevel4",
                                          metrics = "ga:pageviews",
-                                         filters = "ga:pagePath=~^www\\.prada\\.com/(us|ca|cn)/*;ga:pagePathLevel4=~product",
+                                         filters = "ga:pagePath=~^www\\.prada\\.com/(us|ca|cn|it|de|es|gr|fr|mc|be|gb|ie|dk|fi|se|no|at|ch|nl|lu)/*;ga:pagePathLevel4=~product",
                                          split_daywise = F,
                                          paginate_query = paginate_query,
                                          use_miumiu_mirror = use_miumiu_mirror)
