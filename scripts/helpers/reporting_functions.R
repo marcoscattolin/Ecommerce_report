@@ -13,7 +13,7 @@ get_intervals <- function(ref_day){
         
         # prepare for 2018
         list(ytd_prev_start = ymd(paste0(year(ref_day)-1,"-","01","-","01")),
-             ytd_prev_end = ymd(paste0(year(ref_day)-1,"-",month(ref_day),"-",day(ref_day))),
+             ytd_prev_end = ymd(paste0(year(ref_day)-1,"-",month(ref_day),"-",day(ref_day)))+1,
              ytd_curr_start = ymd(paste0(year(ref_day),"-","01","-","01")),
              ytd_curr_end = ref_day,
              mtd_prev_start = ymd(paste0(year(ref_day)-1,"-",month(ref_day),"-","01")),
@@ -744,9 +744,11 @@ ga_get_views <- function(brand, ref_day, lookback_weeks = 12, split_daywise = F)
         #subset to e-store countries
         segment_id <- "gaid::7xcJH6ZkRN2HQOGhoyz98A"
         
-        if(brand %in% c("Prada","Miu Miu")){
+        if(brand == "Prada"){
                 # modified for go live china
-                segment_id <- "gaid::J09RpBPURA2XrNwnp9ih4A"
+                segment_id <- "gaid::UUFKOWvpSBSSW7uN17XFEQ"
+        } else if(brand == "Miu Miu"){
+                segment_id <- "gaid::8sqqkkjUT-eRypO8FBvbFg" 
         } else {
                 segment_id <- "gaid::J09RpBPURA2XrNwnp9ih4A"
         }
@@ -833,7 +835,7 @@ ga_get_most_viewed <- function(ref_day, brand, paginate_query = F, use_miumiu_mi
 ga_get_most_viewed_newsite <- function(ref_day, brand, paginate_query = F, use_miumiu_mirror = F, lookback_days = 6){
         
         
-        
+     if(brand == "Prada"){   
         most_viewed_newsite <- ga_get_data(start_date = ref_day-lookback_days,
                                          end_date = ref_day,
                                          brand = brand,
@@ -850,9 +852,26 @@ ga_get_most_viewed_newsite <- function(ref_day, brand, paginate_query = F, use_m
                 group_by(country_code,brand,sku) %>% 
                 summarise(views = sum(pageviews)) %>% 
                 filter(sku != "") 
-        
-        
+     } else {
+             most_viewed_newsite <- ga_get_data(start_date = ref_day-lookback_days,
+                                                end_date = ref_day,
+                                                brand = brand,
+                                                dimensions = "ga:pagePath,ga:pagePathLevel4",
+                                                metrics = "ga:pageviews",
+                                                filters = "ga:pagePath=~^www\\.miumiu\\.com/(it|de|es|gr|fr|mc|be|gb|ie|dk|fi|se|no|at|ch|nl|lu)/*;ga:pagePathLevel4=~product",
+                                                split_daywise = F,
+                                                paginate_query = paginate_query,
+                                                use_miumiu_mirror = use_miumiu_mirror)
+             
+             most_viewed_newsite <- most_viewed_newsite %>% 
+                     mutate(sku = str_extract(pagePathLevel4,"[A-Z0-9_]*\\.html$") %>% gsub("\\.html$","",.)) %>% 
+                     mutate(country_code = toupper(str_sub(pagePath,16,17)), brand = brand) %>% 
+                     group_by(country_code,brand,sku) %>% 
+                     summarise(views = sum(pageviews)) %>% 
+                     filter(sku != "")   
+     }
 }
+        
 
 most_viewed_reshape <- function(){
         
